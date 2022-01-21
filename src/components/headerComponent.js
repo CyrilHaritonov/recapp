@@ -22,6 +22,7 @@ export const HeaderComponent = () => {
                 expand="md"
                 dark
                 className="bg-dark"
+                fixed="top"
             >
                 <NavbarBrand href="/" className="ms-3 ms-md-5">
                     RecApp
