@@ -9,3 +9,7 @@ body{
 .playlist-card{
     height: 100%;
 }
+
+.navbar-shadow{
+    box-shadow: 0 0 10px black;
+}

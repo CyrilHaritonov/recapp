@@ -14,14 +14,14 @@ import {
 } from "reactstrap";
 
 export const HeaderComponent = () => {
-    const [isNavbarOpen, toggleNav] = useState(0);
+    const [isNavbarOpen, toggleNav] = useState(false);
     return (
         <>
             <Navbar
                 color="light"
                 expand="md"
                 dark
-                className="bg-dark"
+                className="bg-dark navbar-shadow"
                 fixed="top"
             >
                 <NavbarBrand href="/" className="ms-3 ms-md-5">
@@ -34,7 +34,7 @@ export const HeaderComponent = () => {
                         navbar
                     >
                         <NavItem>
-                            <NavLink href="/myplaylists">
+                            <NavLink href="/playlists">
                                 My playlists
                             </NavLink>
                         </NavItem>
