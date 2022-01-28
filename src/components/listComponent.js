@@ -1,9 +1,15 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Row} from "reactstrap";
 import {PlaylistComponent} from "./playlistComponent";
-import {playlists} from "../shared/playlists";
+import {useSelector, useDispatch} from "react-redux";
+import {getPlaylists} from "../redux/reducers/playlists";
 
 export const ListComponent = () => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getPlaylists());
+    }, [dispatch]);
+    const playlists = useSelector(state => state.playlists.playlists);
     return (
         <>
             <Row className="justify-content-center">
