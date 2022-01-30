@@ -5,10 +5,6 @@ import {useSelector, useDispatch} from "react-redux";
 import {getPlaylists} from "../redux/reducers/playlists";
 
 export const ListComponent = () => {
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(getPlaylists());
-    }, [dispatch]);
     const playlists = useSelector(state => state.playlists.playlists);
     return (
         <>

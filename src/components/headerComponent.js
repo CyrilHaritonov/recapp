@@ -1,20 +1,34 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {
     Button,
     Collapse,
     Form,
     FormGroup,
-    Input, InputGroup,
+    Input,
+    Label,
+    Modal,
+    ModalBody,
+    ModalFooter,
+    ModalHeader,
     Nav,
     Navbar,
     NavbarBrand,
     NavbarToggler,
     NavItem,
-    NavLink
+    NavLink, Row
 } from "reactstrap";
+import {SearchBarComponent} from "./searchBarComponent";
+import {useDispatch} from "react-redux";
+import {getPlaylists} from "../redux/reducers/playlists";
 
 export const HeaderComponent = () => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getPlaylists());
+    }, [dispatch]);
     const [isNavbarOpen, toggleNav] = useState(false);
+    const [isLoginModalOpen, toggleLoginModal] = useState(false);
+    const [isLoggedIn, changeLoginStatus] = useState(false);
     return (
         <>
             <Navbar
@@ -49,20 +63,35 @@ export const HeaderComponent = () => {
                             </NavLink>
                         </NavItem>
                     </Nav>
-                    <Nav className="ms-md-auto me-md-auto" navbar>
+                    <SearchBarComponent/>
+                    <Nav navbar className={"ms-lg-5 me-lg-5 ms-md-5 me-md-5"}>
                         <NavItem>
-                            <Form className="mt-2">
-                                <FormGroup row>
-                                    <InputGroup>
-                                        <Input className="song-search" type="search" placeholder="Search" aria-label="Search"/>
-                                        <Button className="song-search" outline>Search</Button>
-                                    </InputGroup>
-                                </FormGroup>
-                            </Form>
+                            {isLoggedIn ?
+                                <Button onClick={() => changeLoginStatus(!isLoggedIn)}>Log out</Button>
+                                :<Button onClick={() => toggleLoginModal(!isLoginModalOpen)}>Login</Button>}
                         </NavItem>
                     </Nav>
                 </Collapse>
             </Navbar>
+            <Modal isOpen={isLoginModalOpen} className={"bg-dark text-white-50"} toggle={() => toggleLoginModal(!isLoginModalOpen)}>
+                <ModalHeader className={"bg-dark border-secondary"} toggle={() => toggleLoginModal(!isLoginModalOpen)}>
+                    <Row>
+                        <h3 className={"modal-title ms-2"}>Login with Spotify</h3>
+                    </Row>
+                </ModalHeader>
+                <ModalBody className={"bg-dark border-dark"}>
+                    <div>
+                        You will be taken to the Spotify login page.
+                        We can not access any of your account`s data except for which you gave us permission to do so.
+                    </div>
+                </ModalBody>
+                <ModalFooter className={"bg-dark border-dark pt-0"}>
+                    <Button className={"ms-2 me-auto btn-success"} onClick={() => {
+                        return(toggleLoginModal(!isLoginModalOpen),
+                        changeLoginStatus(!isLoggedIn));
+                    }}>Login with Spotify</Button>
+                </ModalFooter>
+            </Modal>
         </>
     );
 }
