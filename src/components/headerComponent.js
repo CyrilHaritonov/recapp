@@ -61,7 +61,7 @@ export const HeaderComponent = () => {
                     >
                         <NavItem>
                             <NavLink>
-                                <Link to="/playlists">
+                                <Link to="/">
                                     My playlists
                                 </Link>
                             </NavLink>
