@@ -28,6 +28,9 @@ export const playlistsSlice = createSlice({
     reducers: {
         update: (state, action) => {
             state.playlists = action.payload;
+        },
+        reset: (state) => {
+            state.playlists = [];
         }
     },
     extraReducers: {
@@ -44,5 +47,5 @@ export const playlistsSlice = createSlice({
     }
 });
 
-export const {update} = playlistsSlice.actions;
+export const {update, reset} = playlistsSlice.actions;
 export default playlistsSlice.reducer;

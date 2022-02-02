@@ -1,10 +1,11 @@
 import React from "react";
 import {Row} from "reactstrap";
 import {SongComponent} from "./songComponent";
-import {playlists} from "../shared/playlists";
 import {useParams} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 export const ListOfSongsComponent = () => {
+    const playlists = useSelector(state => state.playlists.playlists);
     const params = useParams();
     let pickedPlaylist = {};
     if (params !== null) {

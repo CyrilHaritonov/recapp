@@ -1,6 +1,7 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {Form, Input, ListGroup, ListGroupItem} from "reactstrap";
 import {useSelector} from "react-redux";
+import {Link} from "react-router-dom";
 
 export const SearchBarComponent = () => {
     const [suggestions, setSuggestions] = useState([]);
@@ -16,8 +17,8 @@ export const SearchBarComponent = () => {
                    placeholder="Search"
                    aria-label="Search"
             onChange={handleChange}/>
-            {searchWord.length !== 0 && <ListGroup style={{position: "absolute"}}>
-                {suggestions.map(result => <ListGroupItem tag={"a"} href={`/playlists/${result.id}`} key={result.id} action>{result.name}</ListGroupItem>)}
+            {searchWord.length !== 0 && <ListGroup className={"searchSuggestions"} style={{position: "absolute", height: "167px", overflowY: "auto"}}>
+                {suggestions.map(result => <Link to={`/playlists/${result.id}`}><ListGroupItem key={result.id} action style={{width: "207px"}}>{result.name}</ListGroupItem></Link>)}
             </ListGroup>}
         </Form>
     );

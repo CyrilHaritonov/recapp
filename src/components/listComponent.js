@@ -1,18 +1,44 @@
-import React, {useEffect} from "react";
-import {Row} from "reactstrap";
+import React from "react";
+import {Card, CardBody, CardTitle, Row} from "reactstrap";
 import {PlaylistComponent} from "./playlistComponent";
-import {useSelector, useDispatch} from "react-redux";
-import {getPlaylists} from "../redux/reducers/playlists";
+import {useSelector} from "react-redux";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faSquarePlus} from "@fortawesome/free-regular-svg-icons";
+import {Link} from "react-router-dom";
 
 export const ListComponent = () => {
     const playlists = useSelector(state => state.playlists.playlists);
-    return (
-        <>
-            <Row className="justify-content-center">
-                {playlists.map(playlist => <PlaylistComponent name={playlist.name} date={playlist.date}
-                                                              imgSrc={playlist.thumbnail} key={playlist.id}
-                                                              id={playlist.id}/>)}
-            </Row>
-        </>
-    );
+    const isLoggedIn = useSelector(state => state.login.status);
+    if (isLoggedIn) {
+        return (
+            <>
+                <Row className="justify-content-center">
+                    {playlists.map(playlist => <PlaylistComponent name={playlist.name} date={playlist.date}
+                                                                  imgSrc={playlist.thumbnail} key={playlist.id}
+                                                                  id={playlist.id}/>)}
+                    <div className="col-12 col-md-3 m-2 d-flex align-items-center justify-content-center">
+                        <Link to={"/newplaylist"}>
+                            <Card className={"bg-black text-white"}>
+                                <CardBody style={{height: "auto"}}
+                                          className={"d-flex addNewPlaylist justify-content-center align-items-center flex-column"}>
+                                    <FontAwesomeIcon icon={faSquarePlus} style={{fontSize: "750%"}}/>
+                                    <CardTitle className={"justify-content-center"}>
+                                        <div style={{textAlign: "center"}}>Create new playlist</div>
+                                    </CardTitle>
+                                </CardBody>
+                            </Card>
+                        </Link>
+                    </div>
+                </Row>
+            </>
+        );
+    } else {
+        return (
+            <>
+                <div className={"d-flex justify-content-center text-white-50"}>
+                    <h1 className={"mt-5"}>You have to be logged in to see your playlists.</h1>
+                </div>
+            </>
+        );
+    }
 }
