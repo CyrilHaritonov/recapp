@@ -32,6 +32,7 @@ const CreateNewPlaylistComponent = () => {
                         <Input valid={playlistName !== ""} invalid={playlistName === "" && nameTouched}
                                placeholder={"Name"}
                                onClick={() => toggleNameTouched(true)}
+                               value={playlistName}
                                onChange={(data) => {
                                    dispatch(updateName(data.target.value))
                                }}/>
@@ -43,6 +44,7 @@ const CreateNewPlaylistComponent = () => {
                                bsSize={"lg"}
                                placeholder={"Choose context"} type={"select"}
                                onClick={() => toggleContextTouched(true)}
+                               value={playlistContext}
                                onChange={(data) => {
                                    dispatch(updateContext(data.target.value))
                                }}>

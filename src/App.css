@@ -38,3 +38,38 @@ a{
 .modal-content{
     background-color: inherit;
 }
+
+.songInstance:hover{
+    background-color: rgba(0, 0, 0, 0.8)!important;
+}
+
+.songInstance:hover div{
+    color: white;
+}
+
+.songInstance:hover img{
+    filter: brightness(50%);
+}
+
+.blurred {
+    position: fixed;
+    z-index: -1;
+    filter: blur(100px);
+    width: 3000px;
+    overflow-y: hidden;
+    background-attachment: fixed;
+}
+
+.cover {
+    z-index: 1;
+    position: relative;
+}
+
+.playlistOptions:hover{
+    background-color: rgba(0, 0, 0, 0.8)!important;
+    color:white !important;
+}
+
+.blurred2{
+    filter: brightness(100%);
+}

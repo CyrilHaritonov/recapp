@@ -15,9 +15,9 @@ function App() {
     <>
         <BrowserRouter>
             <HeaderComponent/>
-            <Container className="bg-black mt-5">
+            <Container style={{marginTop: "40px"}}>
                 <Routes>
-                    <Route path={'/playlists/:playlistId'} element={<ListOfSongsComponent/>}/>
+                    <Route path={'/playlists/:playlistId'} element={<RequireAuth><ListOfSongsComponent/></RequireAuth>}/>
                     <Route path={'*'} element={<NotFoundComponent/>}/>
                     <Route index element={<ListComponent/>}/>
                     <Route path={'/newPlaylist'} element={<RequireAuth><CreateNewPlaylistComponent/></RequireAuth>}/>
