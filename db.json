@@ -55,7 +55,48 @@
       "date": "2013-10-16T17:57:28.556094Z",
       "thumbnail": "/img/pic2.jpg",
       "context": "Context 1",
-      "songs": []
+      "songs": [
+        {
+          "name": "Song",
+          "author": "Author",
+          "thumbnail": "/img/pic3.jpg",
+          "length": "2:20",
+          "preview": "link",
+          "id": 0
+        },
+        {
+          "name": "Song2",
+          "author": "Author",
+          "thumbnail": "/img/pic2.jpg",
+          "length": "2:20",
+          "preview": "link",
+          "id": 1
+        },
+        {
+          "name": "Song3",
+          "author": "Author",
+          "thumbnail": "/img/pic1.jpg",
+          "length": "2:20",
+          "preview": "link",
+          "id": 2
+        },
+        {
+          "name": "Song4",
+          "author": "Author",
+          "thumbnail": "/img/pic2.jpg",
+          "length": "2:20",
+          "preview": "link",
+          "id": 3
+        },
+        {
+          "name": "Song5",
+          "author": "Author",
+          "thumbnail": "/img/pic3.jpg",
+          "length": "2:20",
+          "preview": "link",
+          "id": 4
+        }
+      ]
     },
     {
       "id": 2,
@@ -63,7 +104,48 @@
       "date": "2014-10-16T17:57:28.556094Z",
       "thumbnail": "/img/pic3.jpg",
       "context": "Context 1",
-      "songs": []
+      "songs": [
+        {
+          "name": "Song",
+          "author": "Author",
+          "thumbnail": "/img/pic3.jpg",
+          "length": "2:20",
+          "preview": "link",
+          "id": 0
+        },
+        {
+          "name": "Song2",
+          "author": "Author",
+          "thumbnail": "/img/pic2.jpg",
+          "length": "2:20",
+          "preview": "link",
+          "id": 1
+        },
+        {
+          "name": "Song3",
+          "author": "Author",
+          "thumbnail": "/img/pic1.jpg",
+          "length": "2:20",
+          "preview": "link",
+          "id": 2
+        },
+        {
+          "name": "Song4",
+          "author": "Author",
+          "thumbnail": "/img/pic2.jpg",
+          "length": "2:20",
+          "preview": "link",
+          "id": 3
+        },
+        {
+          "name": "Song5",
+          "author": "Author",
+          "thumbnail": "/img/pic3.jpg",
+          "length": "2:20",
+          "preview": "link",
+          "id": 4
+        }
+      ]
     },
     {
       "id": 3,
@@ -71,7 +153,48 @@
       "date": "2015-10-16T17:57:28.556094Z",
       "thumbnail": "/img/pic4.jpg",
       "context": "Context 1",
-      "songs": []
+      "songs": [
+        {
+          "name": "Song",
+          "author": "Author",
+          "thumbnail": "/img/pic3.jpg",
+          "length": "2:20",
+          "preview": "link",
+          "id": 0
+        },
+        {
+          "name": "Song2",
+          "author": "Author",
+          "thumbnail": "/img/pic2.jpg",
+          "length": "2:20",
+          "preview": "link",
+          "id": 1
+        },
+        {
+          "name": "Song3",
+          "author": "Author",
+          "thumbnail": "/img/pic1.jpg",
+          "length": "2:20",
+          "preview": "link",
+          "id": 2
+        },
+        {
+          "name": "Song4",
+          "author": "Author",
+          "thumbnail": "/img/pic2.jpg",
+          "length": "2:20",
+          "preview": "link",
+          "id": 3
+        },
+        {
+          "name": "Song5",
+          "author": "Author",
+          "thumbnail": "/img/pic3.jpg",
+          "length": "2:20",
+          "preview": "link",
+          "id": 4
+        }
+      ]
     },
     {
       "id": 4,

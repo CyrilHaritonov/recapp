@@ -5,7 +5,6 @@ import {HeaderComponent} from "./components/headerComponent";
 import {Container} from "reactstrap";
 import {ListComponent} from "./components/listComponent";
 import {ListOfSongsComponent} from "./components/listOfSongsComponent";
-import {FooterComponent} from "./components/footerComponent";
 import {NotFoundComponent} from "./components/notFoundComponent";
 import CreateNewPlaylistComponent from "./components/createNewPlaylistComponent";
 import RequireAuth from "./components/requireAuth";
@@ -23,7 +22,6 @@ function App() {
                     <Route path={'/newPlaylist'} element={<RequireAuth><CreateNewPlaylistComponent/></RequireAuth>}/>
                 </Routes>
             </Container>
-            <FooterComponent/>
         </BrowserRouter>
     </>
   );

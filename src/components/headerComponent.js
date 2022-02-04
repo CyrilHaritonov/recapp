@@ -82,7 +82,7 @@ export const HeaderComponent = () => {
                         </NavItem>
                     </Nav>
                     <SearchBarComponent/>
-                    <Nav navbar className={"ms-lg-5 me-lg-5 ms-md-5 me-md-5"}>
+                    <Nav navbar className={"ms-lg-5 me-lg-5 ms-md-3 me-md-3"}>
                         <NavItem>
                             {isLoggedIn ?
                                 <Button outline onClick={() => dispatch(update())}>Log out</Button>
