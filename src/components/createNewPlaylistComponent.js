@@ -20,7 +20,6 @@ const CreateNewPlaylistComponent = () => {
             navigate('/');
         } else {
             toggleNameTouched(true);
-            toggleContextTouched(true);
         }
     }
     return (
@@ -48,9 +47,6 @@ const CreateNewPlaylistComponent = () => {
                                onChange={(data) => {
                                    dispatch(updateContext(data.target.value))
                                }}>
-                            <option disabled hidden selected>
-                                Choose context
-                            </option>
                             <option>
                                 Context 1
                             </option>

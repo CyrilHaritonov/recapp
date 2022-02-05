@@ -35,7 +35,7 @@ export const newPlaylist = createSlice({
     name: "newPlaylist",
     initialState: {
         name: '',
-        context: '',
+        context: 'Context 1',
         wasUpdated: false
     },
     reducers: {

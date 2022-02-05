@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {play, stop} from "../redux/reducers/playing";
 import {deleteSong} from "../redux/reducers/playlistCurrBeingEdited";
 
-export const SongComponent = ({thumbnail, name, length, author, id, playlistId}) => {
+export const SongComponent = ({thumbnail, name, length, author, id, playlistId, number}) => {
     const [isOnHover, changeHover] = useState(false);
     const isBeingEdited = useSelector(state => state.editedPlaylist.playlist?.id);
     const isPlaying = useSelector(state => state.isPlaying.song);
@@ -25,7 +25,7 @@ export const SongComponent = ({thumbnail, name, length, author, id, playlistId})
                     } else {
                         dispatch(play(id));
                     }
-                }} className={"mt-4 mb-1 ms-2"}>{id + 1}</div>
+                }} className={"mt-4 mb-1 ms-2"}>{number + 1}</div>
                 <div onClick={() => {
                     if (isPlaying === id) {
                         dispatch(stop());

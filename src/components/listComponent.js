@@ -16,7 +16,7 @@ export const ListComponent = () => {
                 <>
                     <Row className="justify-content-center">
                         {playlists.map(playlist => <PlaylistComponent name={playlist.name} date={playlist.date}
-                                                                      imgSrc={playlist.thumbnail} key={playlist.id}
+                                                                      imgSrc={playlist?.songs[0]?.thumbnail !== undefined ? playlist?.songs[0].thumbnail : "/img/default.jpg"} key={playlist.id}
                                                                       id={playlist.id}/>)}
                         <div className="col-12 col-md-3 m-2 d-flex align-items-center justify-content-center">
                             <Link to={"/newplaylist"}>

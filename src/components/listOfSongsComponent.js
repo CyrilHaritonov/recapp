@@ -30,11 +30,11 @@ export const ListOfSongsComponent = () => {
     }
     const playlistCurrBeingEdited = useSelector(state => state.editedPlaylist.playlist);
 
-    const songs = pickedPlaylist.songs.map((song) => <SongComponent name={song.name} thumbnail={song.thumbnail}
+    const songs = pickedPlaylist.songs.map((song, index) => <SongComponent name={song.name} thumbnail={song.thumbnail}
                                                                     length={song.length} key={song.id}
-                                                                    author={song.author} id={song.id} playlistId={pickedPlaylist.id}/>);
-    const songsOnEdit = playlistCurrBeingEdited?.songs.map((song) => <SongComponent name={song.name} thumbnail={song.thumbnail}
-                                                                                    length={song.length} key={song.id}
+                                                                    author={song.author} number={index} id={song.id} playlistId={pickedPlaylist.id}/>);
+    const songsOnEdit = playlistCurrBeingEdited?.songs.map((song, index) => <SongComponent name={song.name} thumbnail={song.thumbnail}
+                                                                                    length={song.length} key={song.id} number={index}
                                                                                     author={song.author} id={song.id} playlistId={pickedPlaylist.id}/>);
     const isBeingEdited = playlistCurrBeingEdited?.id === pickedPlaylist.id;
     const dispatch = useDispatch();
@@ -44,9 +44,9 @@ export const ListOfSongsComponent = () => {
             <Row>
                 <div style={{height: "300px"}}
                      className={"d-flex align-items-center col-md-12 col-lg-3 justify-content-center"}>
-                    <img className={"cover"} src={pickedPlaylist.thumbnail} alt={pickedPlaylist.name}
+                    <img className={"cover"} src={pickedPlaylist?.songs[0]?.thumbnail !== undefined ? pickedPlaylist?.songs[0].thumbnail : "/img/default.jpg"} alt={pickedPlaylist.name}
                          style={{height: "200px"}}/>
-                    <img src={pickedPlaylist.thumbnail} style={{zIndex: "-2"}} alt={pickedPlaylist.name}
+                    <img src={pickedPlaylist?.songs[0]?.thumbnail !== undefined ? pickedPlaylist?.songs[0].thumbnail : "/img/default.jpg"} style={{zIndex: "-2"}} alt={pickedPlaylist.name}
                          className={"blurred"}/>
                 </div>
                 <div
