@@ -4,13 +4,14 @@ import {ListGroup} from "reactstrap";
 import RecommendedSong from "./recommendedSongComponent";
 import {recdSongs} from "../shared/redcSongs";
 
-export const FooterComponent = () => {
-    const isBeingEdited = useSelector(state => state.isBeingEdited.status);
-    if (isBeingEdited) {
+export const FooterComponent = ({playlistId}) => {
+    const isBeingEdited = useSelector(state => state.editedPlaylist.playlist?.id);
+
+    if (isBeingEdited === playlistId) {
         return (
             <>
-                <div className={"fixed-bottom d-flex flex-row bg-dark align-items-center bottomRecs"} style={{height: "90px", overflow: "scroll"}}>
-                    <ListGroup horizontal>
+                <div  className={"fixed-bottom bg-dark"}>
+                    <ListGroup style={{height: "100px"}} className={"bottomRecs d-flex flex-row align-items-center"} horizontal>
                         {recdSongs.map(song => <RecommendedSong id={song.id} title={song.title} author={song.author} thumbnail={song.thumbnail}/>)}
                     </ListGroup>
                 </div>

@@ -1,24 +1,44 @@
-import React from "react";
-import {Button, ButtonGroup, Form, FormGroup, Input, Label, Row} from "reactstrap";
-import {useParams} from "react-router-dom";
+import React, {useState} from "react";
+import {
+    Button,
+    ButtonGroup,
+    Form,
+    FormGroup,
+    Input,
+    Label,
+    Modal,
+    ModalFooter,
+    ModalHeader,
+    Row
+} from "reactstrap";
+import {useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {SongComponent} from "./songComponent";
-import {toggle} from "../redux/reducers/editing";
 import {FooterComponent} from "./footerComponent";
+import {setPlaylist, clearPlaylist} from "../redux/reducers/playlistCurrBeingEdited";
+import {putPlaylist} from "../redux/reducers/playlistCurrBeingEdited";
+import {updateSingle} from "../redux/reducers/playlists";
+import {deletePlaylist, update} from "../redux/reducers/playlists";
 
 export const ListOfSongsComponent = () => {
     const playlists = useSelector(state => state.playlists.playlists);
     const params = useParams();
+    const navigate = useNavigate();
     let pickedPlaylist = {};
     if (params !== null) {
         pickedPlaylist = playlists.filter((playlist) => parseInt(params.playlistId) === playlist.id)[0];
     }
+    const playlistCurrBeingEdited = useSelector(state => state.editedPlaylist.playlist);
+
     const songs = pickedPlaylist.songs.map((song) => <SongComponent name={song.name} thumbnail={song.thumbnail}
                                                                     length={song.length} key={song.id}
-                                                                    author={song.author} id={song.id}/>);
-    const isSearchVisible = useSelector(state => state.isBeingEdited.status);
+                                                                    author={song.author} id={song.id} playlistId={pickedPlaylist.id}/>);
+    const songsOnEdit = playlistCurrBeingEdited?.songs.map((song) => <SongComponent name={song.name} thumbnail={song.thumbnail}
+                                                                                    length={song.length} key={song.id}
+                                                                                    author={song.author} id={song.id} playlistId={pickedPlaylist.id}/>);
+    const isBeingEdited = playlistCurrBeingEdited?.id === pickedPlaylist.id;
     const dispatch = useDispatch();
-
+    const [isConfModalOpen, toggleConfModal] = useState(false);
     return (
         <>
             <Row>
@@ -26,7 +46,8 @@ export const ListOfSongsComponent = () => {
                      className={"d-flex align-items-center col-md-12 col-lg-3 justify-content-center"}>
                     <img className={"cover"} src={pickedPlaylist.thumbnail} alt={pickedPlaylist.name}
                          style={{height: "200px"}}/>
-                    <img src={pickedPlaylist.thumbnail} style={{zIndex: "-2"}} alt={pickedPlaylist.name} className={"blurred"}/>
+                    <img src={pickedPlaylist.thumbnail} style={{zIndex: "-2"}} alt={pickedPlaylist.name}
+                         className={"blurred"}/>
                 </div>
                 <div
                     className={"d-flex flex-column ms-lg-0 align-items-center align-items-lg-start justify-content-center mb-5 text-white col-md-12 col-lg-4"}>
@@ -39,13 +60,19 @@ export const ListOfSongsComponent = () => {
                     }).format(new Date(Date.parse(pickedPlaylist.date)))}</div>
                     <div>Context: {pickedPlaylist.context}</div>
                 </div>
-                {!isSearchVisible &&
-                <div className={"col-md-12 col-lg-4 ms-lg-5 mb-5 mb-lg-0 justify-content-center align-items-center d-flex"}>
+                {!isBeingEdited &&
+                <div
+                    className={"col-md-12 col-lg-4 ms-lg-5 mb-5 mb-lg-0 justify-content-center align-items-center d-flex"}>
                     <ButtonGroup size={"lg"}>
                         <Button className={"playlistOptions"}
                                 style={{backgroundColor: "rgba(0, 0, 0, 0.6)", color: "white", borderColor: "black"}}
-                                onClick={() => dispatch(toggle())}>Edit playlist</Button>
+                                onClick={() => {
+                                    dispatch(setPlaylist(pickedPlaylist));
+                                }}>Edit playlist</Button>
                         <Button className={"playlistOptions"}
+                                onClick={() => {
+                                    toggleConfModal(!isConfModalOpen);
+                                }}
                                 style={{backgroundColor: "rgba(0, 0, 0, 0.6)", color: "white", borderColor: "black"}}>Delete
                             playlist</Button>
                         <Button className={"playlistOptions"}
@@ -53,34 +80,77 @@ export const ListOfSongsComponent = () => {
                             to Spotify</Button>
                     </ButtonGroup>
                 </div>}
-                {isSearchVisible &&
+                {isBeingEdited &&
                 <div className={"col-md-12 col-lg-5 mt-lg-5"}>
                     <Row>
-                        <Form className={"col-8 ms-auto"} inline>
-                            <FormGroup floating className={"ms-md-5 ms-lg-0"}>
-                                <Input className={"mt-lg-5"} name={"searchForSongs"} placeholder={"Search for s song"} id={"songSearch"} style={{opacity: "1"}}/>
+                        <div className={"col-12 col-lg-5 order-lg-2 mt-lg-5 d-flex justify-content-center me-auto mb-5 mb-lg-0"}>
+                            <ButtonGroup>
+                                <Button className={"playlistOptions"} style={{
+                                    backgroundColor: "rgba(0, 0, 0, 0.6)",
+                                    color: "white",
+                                    borderColor: "black",
+                                    height: "58px"
+                                }}
+                                        onClick={() => {
+                                            dispatch(putPlaylist({playlist: playlistCurrBeingEdited}));
+                                            dispatch(updateSingle(playlistCurrBeingEdited));
+                                            dispatch(clearPlaylist());
+                                        }}>Save Changes</Button>
+                                <Button className={"playlistOptions"} style={{
+                                    backgroundColor: "rgba(0, 0, 0, 0.6)",
+                                    color: "white",
+                                    borderColor: "black",
+                                    height: "58px"
+                                }}
+                                        onClick={() => {
+                                            dispatch(clearPlaylist());
+                                        }}>Cancel</Button>
+                            </ButtonGroup>
+                        </div>
+                        <Form className={"col-12 col-lg-7 ms-lg-auto"} inline>
+                            <FormGroup floating className={"ms-lg-0"}>
+                                <Input className={"mt-lg-5"} name={"searchForSongs"} placeholder={"Search for s song"}
+                                       id={"songSearch"} style={{opacity: "1"}}/>
                                 <Label for={"songSearch"}>Search for a song</Label>
                             </FormGroup>
                         </Form>
-                        <div className={"col-3 mt-lg-5 me-auto"}>
-                            <Button className={"playlistOptions"} style={{backgroundColor: "rgba(0, 0, 0, 0.6)", color: "white", borderColor: "black", height: "58px"}}
-                                    onClick={() => dispatch(toggle())}>Stop editing</Button>
-                        </div>
                     </Row>
                 </div>
                 }
             </Row>
             <Row className={"mt-5 mt-lg-0"} style={{boxShadow: "0 0 20px black"}}>
-                {pickedPlaylist.songs.length !== 0 && songs}
+                {(pickedPlaylist?.songs.length !== 0 || playlistCurrBeingEdited?.songs.length !== 0) && (isBeingEdited ? songsOnEdit : songs)}
             </Row>
-            {pickedPlaylist.songs.length === 0 &&
-            <div className={" d-flex flex-wrap justify-content-center align-items-center"}>
-                <h1 className={"text-white"}>This playlist is currently empty!</h1>
+            {(pickedPlaylist?.songs.length === 0 && (playlistCurrBeingEdited?.id !== pickedPlaylist.id || playlistCurrBeingEdited?.songs.length === 0 || playlistCurrBeingEdited?.songs.length === undefined)) &&
+            <div className={" d-flex flex-wrap justify-content-center align-items-center"} style={{textAlign: "center"}}>
+                <h1 className={"text-white"}>This playlist is currently empty!<br/>Start editing it to add songs.</h1>
             </div>}
             <Row style={{height: "300px"}}>
 
             </Row>
-            <FooterComponent/>
+            <Modal isOpen={isConfModalOpen} toggle={() => toggleConfModal(!isConfModalOpen)} style={{marginTop: "40vh"}}>
+                <ModalHeader toggle={() => toggleConfModal(!isConfModalOpen)} className={"bg-dark text-white-50 border-0"}>
+                    Are you sure that you want to delete {pickedPlaylist.name} playlist?
+                </ModalHeader>
+            <ModalFooter className={"bg-dark border-0 d-flex justify-content-start"}>
+                <ButtonGroup>
+                    <Button color={"danger"} onClick={() => {
+                        toggleConfModal(!isConfModalOpen);
+                        dispatch(deletePlaylist({id: pickedPlaylist.id}));
+                        dispatch(update(playlists.filter(playlist => playlist.id !== pickedPlaylist.id)));
+                        navigate('/');
+                    }}>
+                        Delete
+                    </Button>
+                    <Button onClick={() => {
+                        toggleConfModal(!isConfModalOpen)
+                    }}>
+                        Cancel
+                    </Button>
+                </ButtonGroup>
+            </ModalFooter>
+            </Modal>
+            <FooterComponent playlistId={pickedPlaylist.id}/>
         </>
     );
 }

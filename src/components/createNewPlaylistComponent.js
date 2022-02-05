@@ -17,7 +17,7 @@ const CreateNewPlaylistComponent = () => {
         if (playlistName !== "" && playlistContext !== "") {
             dispatch(pushPlaylist({name: playlistName, context: playlistContext, id: newId}));
             dispatch(reset());
-            navigate('/playlists');
+            navigate('/');
         } else {
             toggleNameTouched(true);
             toggleContextTouched(true);
