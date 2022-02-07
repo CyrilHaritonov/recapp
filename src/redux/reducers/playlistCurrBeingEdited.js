@@ -27,7 +27,8 @@ export const putPlaylist = createAsyncThunk(
 const PlaylistCurrBeingEdited = createSlice({
     name: "editedPlaylist",
     initialState: {
-        playlist : null
+        playlist : null,
+        pickedSong: null
     },
     reducers: {
         setPlaylist: (state, action) => {
@@ -41,9 +42,31 @@ const PlaylistCurrBeingEdited = createSlice({
         },
         addSong: (state, action) => {
             state.playlist.songs.push(action.payload);
+        },
+        pickSong: (state, action) => {
+            state.pickedSong = action.payload;
+        },
+        clearPickedSong: (state, action) => {
+            state.pickedSong = null;
+        },
+        swapSongs: (state, action) => {
+            let temp1, temp2 = null;
+            const tempSong1 = {...state.playlist.songs.filter((song, index) => {
+                    if (song.id === action.payload.id) {
+                        temp1 = index;
+                    }
+                    if (song.id === state.pickedSong.id) {
+                        temp2 = index;
+                    }
+                    return song.id === action.payload.id;
+                })[0]
+            };
+            const tempSong2 = {...state.pickedSong};
+            state.playlist.songs[temp2] = tempSong1;
+            state.playlist.songs[temp1] = tempSong2;
         }
     }
 });
 
-export const {setPlaylist, clearPlaylist, deleteSong, addSong} = PlaylistCurrBeingEdited.actions;
+export const {setPlaylist, clearPlaylist, deleteSong, addSong, pickSong, clearPickedSong, swapSongs} = PlaylistCurrBeingEdited.actions;
 export default PlaylistCurrBeingEdited.reducer;

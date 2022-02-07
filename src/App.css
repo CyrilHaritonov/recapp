@@ -127,3 +127,8 @@ a{
     color: #a4a4a4;
     cursor: pointer;
 }
+
+.swapOnHover:hover{
+    color: #747779;
+    cursor: pointer;
+}

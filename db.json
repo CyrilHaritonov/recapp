@@ -8,52 +8,31 @@
       "context": "Context 1",
       "songs": [
         {
-          "name": "Song4",
-          "author": "Author",
-          "thumbnail": "/img/pic2.jpg",
-          "length": "2:20",
-          "preview": "link",
-          "id": 3
+          "name": "dfkadsf",
+          "thumbnail": "/img/pic1.jpg",
+          "length": "3:20",
+          "number": 0,
+          "author": "dfadsf",
+          "id": 9073,
+          "playlistId": 0
         },
         {
-          "name": "Song5",
-          "author": "Author",
-          "thumbnail": "/img/pic3.jpg",
-          "length": "2:20",
-          "preview": "link",
-          "id": 4
+          "name": "hjujruy",
+          "thumbnail": "/img/pic2.jpg",
+          "length": "3:20",
+          "number": 0,
+          "author": "urjuyj",
+          "id": 6315,
+          "playlistId": 0
         },
         {
           "name": "afddadf",
-          "author": "dfsadf",
           "thumbnail": "/img/pic3.jpg",
           "length": "3:20",
-          "preview": "link",
-          "id": 6210
-        },
-        {
-          "name": "hjujruy",
-          "author": "urjuyj",
-          "thumbnail": "/img/pic2.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 924
-        },
-        {
-          "name": "dfkadsf",
-          "author": "dfadsf",
-          "thumbnail": "/img/pic1.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 8918
-        },
-        {
-          "name": "hjujruy",
-          "author": "urjuyj",
-          "thumbnail": "/img/pic2.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 892
+          "number": 0,
+          "author": "dfsadf",
+          "id": 1629,
+          "playlistId": 0
         }
       ]
     },
@@ -65,12 +44,31 @@
       "context": "Context 1",
       "songs": [
         {
-          "name": "kglbosgfh",
-          "author": "fasd",
-          "thumbnail": "/img/pic4.jpg",
+          "name": "hjujruy",
+          "thumbnail": "/img/pic2.jpg",
           "length": "3:20",
-          "preview": "link",
-          "id": 7487
+          "number": 1,
+          "author": "urjuyj",
+          "id": 4252,
+          "playlistId": 1
+        },
+        {
+          "name": "dfkadsf",
+          "thumbnail": "/img/pic1.jpg",
+          "length": "3:20",
+          "number": 0,
+          "author": "dfadsf",
+          "id": 7157,
+          "playlistId": 1
+        },
+        {
+          "name": "fgfgaffa",
+          "thumbnail": "/img/pic1.jpg",
+          "length": "3:20",
+          "number": 4,
+          "author": "aedfdsaf",
+          "id": 7957,
+          "playlistId": 1
         },
         {
           "name": "kglbosgfh",
@@ -90,36 +88,22 @@
       "context": "Context 1",
       "songs": [
         {
-          "name": "Song",
-          "author": "Author",
+          "name": "Song5",
           "thumbnail": "/img/pic3.jpg",
           "length": "2:20",
-          "preview": "link",
-          "id": 0
-        },
-        {
-          "name": "Song2",
+          "number": 1,
           "author": "Author",
-          "thumbnail": "/img/pic2.jpg",
-          "length": "2:20",
-          "preview": "link",
-          "id": 1
+          "id": 4,
+          "playlistId": 2
         },
         {
           "name": "Song3",
-          "author": "Author",
           "thumbnail": "/img/pic1.jpg",
           "length": "2:20",
-          "preview": "link",
-          "id": 2
-        },
-        {
-          "name": "Song5",
+          "number": 0,
           "author": "Author",
-          "thumbnail": "/img/pic3.jpg",
-          "length": "2:20",
-          "preview": "link",
-          "id": 4
+          "id": 2,
+          "playlistId": 2
         }
       ]
     },
