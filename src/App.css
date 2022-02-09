@@ -132,3 +132,8 @@ a{
     color: #747779;
     cursor: pointer;
 }
+
+.editNameOnHover:hover{
+    color: #747779;
+    cursor: pointer;
+}

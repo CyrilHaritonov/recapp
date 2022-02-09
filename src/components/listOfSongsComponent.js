@@ -1,11 +1,25 @@
 import React, {useState} from "react";
-import {Button, ButtonGroup, Form, FormGroup, Input, Label, Modal, ModalFooter, ModalHeader, Row} from "reactstrap";
+import {
+    Button,
+    ButtonGroup,
+    Form, FormFeedback,
+    FormGroup,
+    Input,
+    Label,
+    Modal,
+    ModalBody,
+    ModalFooter,
+    ModalHeader,
+    Row
+} from "reactstrap";
 import {useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {SongComponent} from "./songComponent";
 import {FooterComponent} from "./footerComponent";
 import {clearPickedSong, clearPlaylist, putPlaylist, setPlaylist} from "../redux/reducers/playlistCurrBeingEdited";
 import {deletePlaylist, update, updateSingle} from "../redux/reducers/playlists";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faPen} from "@fortawesome/free-solid-svg-icons";
 
 export const ListOfSongsComponent = () => {
     const playlists = useSelector(state => state.playlists.playlists);
@@ -31,6 +45,9 @@ export const ListOfSongsComponent = () => {
     const isBeingEdited = playlistCurrBeingEdited?.id === pickedPlaylist.id;
     const dispatch = useDispatch();
     const [isConfModalOpen, toggleConfModal] = useState(false);
+    const [isRenameModalOpen, toggleRenameModal] = useState(false);
+    const [newName, changeNewName] = useState("");
+    const [newNameTouched, toggleNewNameTouched] = useState(false);
     return (
         <>
             <Row>
@@ -40,12 +57,16 @@ export const ListOfSongsComponent = () => {
                          src={pickedPlaylist?.songs[0]?.thumbnail !== undefined ? pickedPlaylist?.songs[0].thumbnail : "/img/default.jpg"}
                          alt={pickedPlaylist.name}
                          style={{height: "200px"}}/>
-                    <img src={pickedPlaylist?.songs[0].thumbnail} style={{zIndex: "-2"}} alt={pickedPlaylist.name}
+                    <img src={pickedPlaylist?.songs[0]?.thumbnail !== undefined ? pickedPlaylist?.songs[0].thumbnail : "/img/default.jpg"} style={{zIndex: "-2"}} alt={pickedPlaylist.name}
                          className={"blurred"}/>
                 </div>
                 <div
                     className={"d-flex flex-column ms-lg-0 align-items-center align-items-lg-start justify-content-center mb-5 text-white col-md-12 col-lg-4"}>
-                    <h1>{pickedPlaylist.name}</h1>
+                    <h1>{isBeingEdited ? playlistCurrBeingEdited.name : pickedPlaylist.name} {isBeingEdited ? <FontAwesomeIcon icon={faPen} style={{fontSize: "1.3rem", marginBottom: "5px"}} className={"editNameOnHover"} onClick={
+                        () => {
+                            toggleRenameModal(true);
+                        }
+                    }/>: ""} </h1>
                     <div>Number of songs: {pickedPlaylist.songs.length}</div>
                     <div>Created on: {new Intl.DateTimeFormat('en-US', {
                         year: 'numeric',
@@ -147,6 +168,36 @@ export const ListOfSongsComponent = () => {
                             Cancel
                         </Button>
                     </ButtonGroup>
+                </ModalFooter>
+            </Modal>
+            <Modal isOpen={isRenameModalOpen} toggle={() => toggleRenameModal(false)} style={{marginTop: "40vh"}}>
+                <ModalHeader toggle={() => toggleRenameModal(false)} className={"bg-dark text-white-50 border-0"}>
+                    Rename playlist
+                </ModalHeader>
+                <ModalBody className={"bg-dark border-0"}>
+                    <Form onSubmit={(obj) => {
+                        obj.preventDefault();
+                    }}>
+                        <FormGroup floating>
+                            <Input placeholder={"Enter new name"} value={newName} onChange={(data) => changeNewName(data.target.value)}
+                                   valid={newName !== "" && newName.length >= 3 && newName.length <= 15} invalid={(newName === "" || (newName.length < 3 || newName.length > 15)) && newNameTouched} onClick={() => toggleNewNameTouched(true)}/>
+                            <Label for={"newNameInput"}>Enter new name</Label>
+                            {newName === "" && <FormFeedback>Playlist name is required!</FormFeedback>}
+                            {(newName.length < 3 || newName.length > 15) && <FormFeedback>Playlist name length should be from 3 to 15 symbols!</FormFeedback>}
+                        </FormGroup>
+                    </Form>
+                </ModalBody>
+                <ModalFooter className={"bg-dark text-white-50 border-0"}>
+                    <Button onClick={() => {
+                        if (newName !== "" && newName.length >= 3 && newName.length <= 15) {
+                            toggleRenameModal(false);
+                            dispatch(setPlaylist({...playlistCurrBeingEdited, name: newName}));
+                            toggleNewNameTouched(false);
+                            changeNewName("");
+                        } else {
+                            toggleNewNameTouched(true);
+                        }
+                    }}>Rename</Button>
                 </ModalFooter>
             </Modal>
             <FooterComponent playlistId={pickedPlaylist.id}/>

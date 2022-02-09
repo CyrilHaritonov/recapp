@@ -75,8 +75,11 @@ export const HeaderComponent = () => {
                         </NavItem>
                         <NavItem>
                             <NavLink>
-                                <Link to="/github">
-                                GitHub
+                                <Link to={"/"} onClick={() => {
+                                    window.open("https://github.com/CyrilHaritonov/recapp", "_blank");
+                                    return null;
+                                }}>
+                                    GitHub
                                 </Link>
                             </NavLink>
                         </NavItem>

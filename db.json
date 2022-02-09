@@ -2,7 +2,7 @@
   "playlists": [
     {
       "id": 0,
-      "name": "First playlist",
+      "name": "Test name",
       "date": "2012-10-16T17:57:28.556094Z",
       "thumbnail": "/img/pic1.jpg",
       "context": "Context 1",
@@ -33,6 +33,30 @@
           "author": "dfsadf",
           "id": 1629,
           "playlistId": 0
+        },
+        {
+          "name": "dfkadsf",
+          "author": "dfadsf",
+          "thumbnail": "/img/pic1.jpg",
+          "length": "3:20",
+          "preview": "link",
+          "id": 5238
+        },
+        {
+          "name": "afddadf",
+          "author": "dfsadf",
+          "thumbnail": "/img/pic3.jpg",
+          "length": "3:20",
+          "preview": "link",
+          "id": 7979
+        },
+        {
+          "name": "kglbosgfh",
+          "author": "fasd",
+          "thumbnail": "/img/pic4.jpg",
+          "length": "3:20",
+          "preview": "link",
+          "id": 3081
         }
       ]
     },
@@ -181,12 +205,13 @@
       "context": "Context 1",
       "songs": [
         {
-          "name": "afddadf",
-          "author": "dfsadf",
-          "thumbnail": "/img/pic3.jpg",
+          "name": "dfkadsf",
+          "thumbnail": "/img/pic1.jpg",
           "length": "3:20",
-          "preview": "link",
-          "id": 1176
+          "number": 2,
+          "author": "dfadsf",
+          "id": 3095,
+          "playlistId": 6
         },
         {
           "name": "kglbosgfh",
@@ -195,6 +220,14 @@
           "length": "3:20",
           "preview": "link",
           "id": 645
+        },
+        {
+          "name": "afddadf",
+          "author": "dfsadf",
+          "thumbnail": "/img/pic3.jpg",
+          "length": "3:20",
+          "preview": "link",
+          "id": 1176
         }
       ]
     },
@@ -380,6 +413,90 @@
         }
       ],
       "context": "Context 2"
+    },
+    {
+      "id": 15,
+      "name": "dfadsfds",
+      "date": "2022-02-09T13:32:26.522Z",
+      "thumbnail": "/img/default.jpg",
+      "songs": [
+        {
+          "name": "kglbosgfh",
+          "author": "fasd",
+          "thumbnail": "/img/pic4.jpg",
+          "length": "3:20",
+          "preview": "link",
+          "id": 1120
+        },
+        {
+          "name": "fgfgaffa",
+          "author": "aedfdsaf",
+          "thumbnail": "/img/pic1.jpg",
+          "length": "3:20",
+          "preview": "link",
+          "id": 5631
+        },
+        {
+          "name": "afddadf",
+          "author": "dfsadf",
+          "thumbnail": "/img/pic3.jpg",
+          "length": "3:20",
+          "preview": "link",
+          "id": 822
+        }
+      ],
+      "context": "Context 1"
+    },
+    {
+      "id": 16,
+      "name": "Godlike name",
+      "date": "2022-02-09T17:29:14.414Z",
+      "thumbnail": "/img/default.jpg",
+      "songs": [
+        {
+          "name": "hjujruy",
+          "author": "urjuyj",
+          "thumbnail": "/img/pic2.jpg",
+          "length": "3:20",
+          "preview": "link",
+          "id": 2100
+        },
+        {
+          "name": "dfkadsf",
+          "author": "dfadsf",
+          "thumbnail": "/img/pic1.jpg",
+          "length": "3:20",
+          "preview": "link",
+          "id": 5811
+        }
+      ],
+      "context": "Context 1"
+    },
+    {
+      "id": 17,
+      "name": "new name",
+      "date": "2022-02-09T17:34:42.391Z",
+      "thumbnail": "/img/default.jpg",
+      "songs": [
+        {
+          "name": "kglbosgfh",
+          "thumbnail": "/img/pic4.jpg",
+          "length": "3:20",
+          "number": 1,
+          "author": "fasd",
+          "id": 9614,
+          "playlistId": 17
+        },
+        {
+          "name": "fgfgaffa",
+          "author": "aedfdsaf",
+          "thumbnail": "/img/pic1.jpg",
+          "length": "3:20",
+          "preview": "link",
+          "id": 7466
+        }
+      ],
+      "context": "Context 1"
     }
   ]
 }

@@ -8,6 +8,7 @@ import {ListOfSongsComponent} from "./components/listOfSongsComponent";
 import {NotFoundComponent} from "./components/notFoundComponent";
 import CreateNewPlaylistComponent from "./components/createNewPlaylistComponent";
 import RequireAuth from "./components/requireAuth";
+import SubscriptionComponent from "./components/subscriptionComponent";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
                     <Route path={'*'} element={<NotFoundComponent/>}/>
                     <Route index element={<ListComponent/>}/>
                     <Route path={'/newPlaylist'} element={<RequireAuth><CreateNewPlaylistComponent/></RequireAuth>}/>
+                    <Route path={'/subscription'} element={<SubscriptionComponent />}/>
                 </Routes>
             </Container>
         </BrowserRouter>
