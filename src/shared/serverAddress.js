@@ -1,1 +1,1 @@
-export const serverAddress = "http://localhost:2000/";
+export const serverAddress = "https://cyrilharitonov.azurewebsites.net/";
