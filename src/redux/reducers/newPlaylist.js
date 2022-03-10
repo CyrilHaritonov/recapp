@@ -3,14 +3,15 @@ import {serverAddress} from "../../shared/serverAddress";
 
 export const pushPlaylist = createAsyncThunk(
     'newPlaylist/pushPlaylist',
-    async ({name, context, id}) => {
+    async ({username, name, context, id}) => {
         const newPlaylist = {
+            user: username,
             id: id,
             name: name,
             date: new Date().toISOString(),
             thumbnail: "/img/default.jpg",
             songs: [],
-            context: context
+            context: context,
         }
 
         return (
@@ -35,7 +36,7 @@ export const newPlaylist = createSlice({
     name: "newPlaylist",
     initialState: {
         name: '',
-        context: '',
+        context: 'Context 1',
         wasUpdated: false
     },
     reducers: {
@@ -47,7 +48,7 @@ export const newPlaylist = createSlice({
         },
         reset: (state) => {
             state.name = '';
-            state.context = '';
+            state.context = 'Context 1';
             state.wasUpdated = true;
         },
         updateStatus: state => {

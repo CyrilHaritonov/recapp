@@ -2,201 +2,106 @@
   "playlists": [
     {
       "id": 0,
+      "user": "mrsup23",
       "name": "First playlist",
       "date": "2012-10-16T17:57:28.556094Z",
       "thumbnail": "/img/pic1.jpg",
       "songs": [
         {
-          "name": "Song",
-          "author": "Author",
-          "thumbnail": "/img/pic3.jpg",
-          "length": "2:20",
-          "preview": "link",
-          "id": 0
+          "name": "Harder, Better, Faster, Stronger",
+          "thumbnail": "https://i.scdn.co/image/ab67616d0000b273b33d46dfa2635a47eebf63b2",
+          "length": "4:04",
+          "number": 2,
+          "author": "Daft Punk",
+          "id": "spotify:track:5W3cjX2J3tjhG8zb6u0qHn",
+          "playlistId": 0
         },
         {
-          "name": "Song2",
-          "author": "Author",
-          "thumbnail": "/img/pic2.jpg",
-          "length": "2:20",
-          "preview": "link",
-          "id": 1
+          "name": "Get Lucky (feat. Pharrell Williams & Nile Rodgers) - Radio Edit",
+          "author": "Daft Punk",
+          "thumbnail": "https://i.scdn.co/image/ab67616d0000b2731d5cf960a92bb8b03fc2be7f",
+          "length": "4:04",
+          "id": "spotify:track:2Foc5Q5nqNiosCNqttzHof"
         },
         {
-          "name": "Song3",
-          "author": "Author",
-          "thumbnail": "/img/pic1.jpg",
-          "length": "2:20",
-          "preview": "link",
-          "id": 2
+          "name": "astral step",
+          "author": "shadowraze",
+          "thumbnail": "https://i.scdn.co/image/ab67616d0000b273209b4ad8dd5fe857f18e0ba6",
+          "length": "2:02",
+          "id": "spotify:track:47iHvzU9Po0e6raFlgLBOF"
         },
         {
-          "name": "Song4",
-          "author": "Author",
-          "thumbnail": "/img/pic2.jpg",
-          "length": "2:20",
-          "preview": "link",
-          "id": 3
+          "name": "Around the World",
+          "author": "Daft Punk",
+          "thumbnail": "https://i.scdn.co/image/ab67616d0000b2738ac778cc7d88779f74d33311",
+          "length": "7:07",
+          "id": "spotify:track:1pKYYY0dkg23sQQXi0Q5zN"
         },
         {
-          "name": "Song5",
-          "author": "Author",
-          "thumbnail": "/img/pic3.jpg",
-          "length": "2:20",
-          "preview": "link",
-          "id": 4
+          "name": "Starboy",
+          "author": "The Weeknd",
+          "thumbnail": "https://i.scdn.co/image/ab67616d0000b2734718e2b124f79258be7bc452",
+          "length": "4:04",
+          "id": "spotify:track:7MXVkk9YMctZqd1Srtv4MB"
+        },
+        {
+          "name": "Robot Rock",
+          "author": "Daft Punk",
+          "thumbnail": "https://i.scdn.co/image/ab67616d0000b2732ed719bad67261c7bf090c70",
+          "length": "5:05",
+          "id": "spotify:track:7LL40F6YdZgeiQ6en1c7Lk"
         }
       ]
     },
     {
-      "id": 1,
-      "name": "Second playlist",
-      "date": "2013-10-16T17:57:28.556094Z",
-      "thumbnail": "/img/pic2.jpg",
-      "songs": []
-    },
-    {
-      "id": 2,
-      "name": "Third playlist",
-      "date": "2014-10-16T17:57:28.556094Z",
-      "thumbnail": "/img/pic3.jpg",
-      "songs": []
-    },
-    {
+      "user": "mrsup23",
       "id": 3,
-      "name": "Forth playlist",
-      "date": "2015-10-16T17:57:28.556094Z",
-      "thumbnail": "/img/pic4.jpg",
-      "songs": []
+      "name": "check",
+      "date": "2022-03-10T19:53:48.709Z",
+      "thumbnail": "/img/default.jpg",
+      "songs": [
+        {
+          "name": "Нужен Xanax",
+          "author": "Паша Техник",
+          "thumbnail": "https://i.scdn.co/image/ab67616d0000b27389038ccaa76ad42c9d3f14bc",
+          "length": "4:04",
+          "id": "spotify:track:2Ih1HRxEm2WCgqAdfiuIXx"
+        }
+      ],
+      "context": "Context 1"
     },
     {
+      "user": "mrsup23",
       "id": 4,
-      "name": "Fifth playlist",
-      "date": "2015-10-16T17:57:28.556094Z",
-      "thumbnail": "/img/pic4.jpg",
-      "songs": []
+      "name": "third",
+      "date": "2022-03-10T19:54:13.049Z",
+      "thumbnail": "/img/default.jpg",
+      "songs": [
+        {
+          "name": "Всё идёт по плану",
+          "author": "Гражданская Оборона",
+          "thumbnail": "https://i.scdn.co/image/ab67616d0000b2738ee149a9ea6c2a2f64ed7e5b",
+          "length": "5:05",
+          "id": "spotify:track:2f8yKdBQmCObxhScin20iB"
+        }
+      ],
+      "context": "Context 1"
     },
     {
+      "user": "mrsup23",
       "id": 5,
-      "name": "First playlist",
-      "date": "2012-10-16T17:57:28.556094Z",
-      "thumbnail": "/img/pic1.jpg",
-      "songs": []
-    },
-    {
-      "id": 6,
-      "name": "Second playlist",
-      "date": "2013-10-16T17:57:28.556094Z",
-      "thumbnail": "/img/pic2.jpg",
-      "songs": []
-    },
-    {
-      "id": 7,
-      "name": "Third playlist",
-      "date": "2014-10-16T17:57:28.556094Z",
-      "thumbnail": "/img/pic3.jpg",
-      "songs": []
-    },
-    {
-      "id": 8,
-      "name": "Forth playlist",
-      "date": "2015-10-16T17:57:28.556094Z",
-      "thumbnail": "/img/pic4.jpg",
-      "songs": []
-    },
-    {
-      "id": 9,
-      "name": "Fifth playlist",
-      "date": "2015-10-16T17:57:28.556094Z",
-      "thumbnail": "/img/pic4.jpg",
-      "songs": []
-    },
-    {
-      "id": 10,
-      "name": "dadadad",
-      "date": "2022-02-01T23:41:13.703Z",
-      "thumbnail": "/img/default.jpg",
-      "songs": [],
-      "context": "Context 5"
-    },
-    {
-      "id": 11,
-      "name": "zhendos",
-      "date": "2022-02-02T15:21:00.255Z",
-      "thumbnail": "/img/default.jpg",
-      "songs": [],
-      "context": "Context 2"
-    },
-    {
-      "id": 12,
-      "name": "dfdafdfdfadfdsf",
-      "date": "2022-02-02T15:35:47.696Z",
-      "thumbnail": "/img/default.jpg",
-      "songs": [],
-      "context": "Context 3"
-    },
-    {
-      "id": 13,
-      "name": "вафвафыва",
-      "date": "2022-02-02T15:42:29.434Z",
-      "thumbnail": "/img/default.jpg",
-      "songs": [],
-      "context": "Context 3"
-    },
-    {
-      "id": 14,
-      "name": "dfadsfads",
-      "date": "2022-02-02T16:17:49.704Z",
-      "thumbnail": "/img/default.jpg",
-      "songs": [],
-      "context": "Context 3"
-    },
-    {
-      "id": 15,
       "name": "test",
-      "date": "2022-02-02T16:19:14.722Z",
+      "date": "2022-03-10T20:02:09.786Z",
       "thumbnail": "/img/default.jpg",
-      "songs": [],
-      "context": "Context 3"
-    },
-    {
-      "id": 16,
-      "name": "",
-      "date": "2022-02-02T16:19:42.142Z",
-      "thumbnail": "/img/default.jpg",
-      "songs": [],
-      "context": ""
-    },
-    {
-      "id": 17,
-      "name": "eto test formi",
-      "date": "2022-02-02T18:12:23.816Z",
-      "thumbnail": "/img/default.jpg",
-      "songs": [],
-      "context": "Context 2"
-    },
-    {
-      "id": 18,
-      "name": "",
-      "date": "2022-02-02T18:12:37.850Z",
-      "thumbnail": "/img/default.jpg",
-      "songs": [],
-      "context": ""
-    },
-    {
-      "id": 19,
-      "name": "",
-      "date": "2022-02-02T18:13:33.024Z",
-      "thumbnail": "/img/default.jpg",
-      "songs": [],
-      "context": ""
-    },
-    {
-      "id": 20,
-      "name": "testfdf",
-      "date": "2022-02-02T18:15:24.283Z",
-      "thumbnail": "/img/default.jpg",
-      "songs": [],
+      "songs": [
+        {
+          "name": "The Final Episode (Let's Change Channel)",
+          "author": "Asking Alexandria",
+          "thumbnail": "https://i.scdn.co/image/ab67616d0000b273f33d30f467a7998ecdfd00ab",
+          "length": "4:04",
+          "id": "spotify:track:0CqCpm4LLQbHUX5ysizWJS"
+        }
+      ],
       "context": "Context 3"
     }
   ]

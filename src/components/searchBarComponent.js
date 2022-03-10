@@ -7,17 +7,18 @@ export const SearchBarComponent = () => {
     const [suggestions, setSuggestions] = useState([]);
     const [searchWord, setSearchWord] = useState('');
     const playlists = useSelector(state => state.playlists.playlists);
+    const [isInFocus, setFocus] = useState(false);
     const handleChange = (event) => {
         setSearchWord(event.target.value);
         setSuggestions(playlists.filter(value => value.name.toLowerCase().includes(searchWord.toLowerCase())));
     }
     return (
-        <Form className="mt-2 mb-2 ms-auto">
+        <Form className="mt-2 mb-2 ms-auto" onFocus={() => setFocus(true)}>
             <Input className="ms-md-auto" type="search" style={{width: "inherit", boxSizing: "border-box"}}
                    placeholder="Search"
                    aria-label="Search"
             onChange={handleChange}/>
-            {searchWord.length !== 0 && <ListGroup className={"searchSuggestions"} style={{position: "absolute", height: "167px", overflowY: "auto"}}>
+            {searchWord.length !== 0 && isInFocus && <ListGroup onClick={() => setFocus(false)} className={"searchSuggestions"} style={{position: "absolute", height: "167px", overflowY: "auto"}}>
                 {suggestions.map(result => <Link to={`/playlists/${result.id}`}><ListGroupItem key={result.id} action style={{width: "207px"}}>{result.name}</ListGroupItem></Link>)}
             </ListGroup>}
         </Form>

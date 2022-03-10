@@ -38,3 +38,102 @@ a{
 .modal-content{
     background-color: inherit;
 }
+
+.songInstance:hover{
+    background-color: rgba(0, 0, 0, 0.8)!important;
+    cursor: pointer;
+}
+
+.songInstance:hover div{
+    color: white;
+}
+
+.songInstance:hover img{
+    filter: brightness(50%);
+}
+
+.blurred {
+    position: fixed;
+    z-index: -1;
+    filter: blur(100px);
+    width: 3000px;
+    overflow-y: hidden;
+    background-attachment: fixed;
+}
+
+.cover {
+    z-index: 1;
+    position: relative;
+}
+
+.playlistOptions:hover{
+    background-color: rgba(0, 0, 0, 0.8)!important;
+    color:white !important;
+}
+
+.blurred2{
+    filter: brightness(100%);
+}
+
+.deleteSong:hover{
+    color: #a4a4a4;
+}
+
+.isPlaying{
+    background-color: rgba(5, 5, 5, 0.8) !important;
+    color: #13bd0e !important;
+}
+
+.isPlaying img{
+    filter: brightness(50%);
+}
+
+.recommendedSong:hover{
+    background-color: rgba(0, 0, 0, 1)!important;
+    color:white !important;
+    cursor: pointer;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.bottomRecs::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.bottomRecs {
+    -ms-overflow-style: scrollbar;  /* IE and Edge */
+    scrollbar-width: thin;  /* Firefox */
+}
+
+.bottomRecs::-webkit-scrollbar-track{
+    background-color: #1d2024;
+}
+
+.bottomRecs::-webkit-scrollbar-thumb{
+    background-color: #747779;
+}
+
+.bottomRecs{
+    overflow-x: scroll !important;
+    overflow-y: hidden !important;
+}
+
+.recdSongAdd:hover{
+    color: #a4a4a4 !important;
+    cursor: pointer;
+}
+
+.playButton:hover{
+    color: #a4a4a4;
+    cursor: pointer;
+}
+
+.swapOnHover:hover{
+    color: #747779;
+    cursor: pointer;
+}
+
+.editNameOnHover:hover{
+    color: #747779;
+    cursor: pointer;
+}

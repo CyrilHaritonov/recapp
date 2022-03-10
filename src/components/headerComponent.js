@@ -20,23 +20,40 @@ import {getPlaylists, reset} from "../redux/reducers/playlists";
 import {update} from "../redux/reducers/login";
 import {Link} from "react-router-dom";
 import {updateStatus} from "../redux/reducers/newPlaylist";
+import {AUTH_URL} from "../shared/loginLink.js";
+import useAuth from "./useAuth";
+import SpotifyWebApi from "spotify-web-api-node";
+
+export const spotifyApi = new SpotifyWebApi({
+    clientId: "5c74110a77af40ac94d6f1130c58b87e",
+})
 
 export const HeaderComponent = () => {
     const dispatch = useDispatch();
     const isLoggedIn = useSelector(state => state.login.status);
     const wasUpdated = useSelector(state => state.newPlaylist.wasUpdated);
+    const code = new URLSearchParams(window.location.search).get("code");
+    const accessToken = useAuth(code);
     useEffect(() => {
+        if (!accessToken) return;
+        spotifyApi.setAccessToken(accessToken);
+    }, [accessToken])
+
+    useEffect(() => {
+        dispatch(update());
         if (isLoggedIn){
-            dispatch(getPlaylists());
-            if (wasUpdated){
-                dispatch(getPlaylists());
-                dispatch(updateStatus());
-            }
+            spotifyApi.getMe().then((data) => {
+                dispatch(getPlaylists(data.body.display_name));
+                if (wasUpdated){
+                    dispatch(getPlaylists(data.body.display_name));
+                    dispatch(updateStatus());
+                }
+            })
         }
         else {
             dispatch(reset());
         }
-        }, [isLoggedIn, wasUpdated]);
+        }, [isLoggedIn, wasUpdated, accessToken]);
     const [isNavbarOpen, toggleNav] = useState(false);
     const [isLoginModalOpen, toggleLoginModal] = useState(false);
     return (
@@ -61,7 +78,7 @@ export const HeaderComponent = () => {
                     >
                         <NavItem>
                             <NavLink>
-                                <Link to="/playlists">
+                                <Link to="/">
                                     My playlists
                                 </Link>
                             </NavLink>
@@ -75,17 +92,25 @@ export const HeaderComponent = () => {
                         </NavItem>
                         <NavItem>
                             <NavLink>
-                                <Link to="/github">
-                                GitHub
+                                <Link to={"/"} onClick={() => {
+                                    window.open("https://github.com/CyrilHaritonov/recapp", "_blank");
+                                    return null;
+                                }}>
+                                    GitHub
                                 </Link>
                             </NavLink>
                         </NavItem>
                     </Nav>
                     <SearchBarComponent/>
-                    <Nav navbar className={"ms-lg-5 me-lg-5 ms-md-5 me-md-5"}>
+                    <Nav navbar className={"ms-lg-5 me-lg-5 ms-md-3 me-md-3"}>
                         <NavItem>
                             {isLoggedIn ?
-                                <Button outline onClick={() => dispatch(update())}>Log out</Button>
+                                <Button outline onClick={() => {
+                                    localStorage.removeItem("accessToken");
+                                    localStorage.removeItem("refreshToken");
+                                    localStorage.removeItem("expiresIn");
+                                    dispatch(update())
+                                }}>Log out</Button>
                                 :<Button outline onClick={() => toggleLoginModal(!isLoginModalOpen)}>Login</Button>}
                         </NavItem>
                     </Nav>
@@ -106,9 +131,8 @@ export const HeaderComponent = () => {
                     </div>
                 </ModalBody>
                 <ModalFooter className={"bg-dark border-dark pt-0"}>
-                    <Button className={"ms-2 me-auto btn-success"} onClick={() => {
-                        return(toggleLoginModal(!isLoginModalOpen),
-                        dispatch(update()));
+                    <Button className={"ms-2 me-auto btn-success"} href={AUTH_URL} onClick={() => {
+                        return(toggleLoginModal(!isLoginModalOpen));
                     }}>Login with Spotify</Button>
                 </ModalFooter>
             </Modal>

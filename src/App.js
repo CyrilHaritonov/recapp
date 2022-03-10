@@ -5,25 +5,25 @@ import {HeaderComponent} from "./components/headerComponent";
 import {Container} from "reactstrap";
 import {ListComponent} from "./components/listComponent";
 import {ListOfSongsComponent} from "./components/listOfSongsComponent";
-import {FooterComponent} from "./components/footerComponent";
 import {NotFoundComponent} from "./components/notFoundComponent";
 import CreateNewPlaylistComponent from "./components/createNewPlaylistComponent";
+import RequireAuth from "./components/requireAuth";
+import SubscriptionComponent from "./components/subscriptionComponent";
 
 function App() {
-  return (
+    return (
     <>
         <BrowserRouter>
             <HeaderComponent/>
-            <Container className="bg-black mt-5">
+            <Container style={{marginTop: "40px"}}>
                 <Routes>
-                    <Route path={"/playlists"} element={<ListComponent/>}/>
-                    <Route path={'/playlists/:playlistId'} element={<ListOfSongsComponent/>}/>
+                    <Route path={'/playlists/:playlistId'} element={<RequireAuth><ListOfSongsComponent/></RequireAuth>}/>
                     <Route path={'*'} element={<NotFoundComponent/>}/>
                     <Route index element={<ListComponent/>}/>
-                    <Route path={'/newPlaylist'} element={<CreateNewPlaylistComponent/>}/>
+                    <Route path={'/newPlaylist'} element={<RequireAuth><CreateNewPlaylistComponent/></RequireAuth>}/>
+                    <Route path={'/subscription'} element={<SubscriptionComponent />}/>
                 </Routes>
             </Container>
-            <FooterComponent/>
         </BrowserRouter>
     </>
   );

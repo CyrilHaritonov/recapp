@@ -3,6 +3,7 @@ import {Button, Form, FormFeedback, FormGroup, Input, Label} from "reactstrap";
 import {useDispatch, useSelector} from "react-redux";
 import {pushPlaylist, reset, updateContext, updateName} from "../redux/reducers/newPlaylist";
 import {useNavigate} from "react-router-dom";
+import {spotifyApi} from "./headerComponent";
 
 const CreateNewPlaylistComponent = () => {
     const dispatch = useDispatch();
@@ -11,44 +12,51 @@ const CreateNewPlaylistComponent = () => {
     const playlistContext = useSelector(state => state.newPlaylist.context);
     const playlist = useSelector(state => state.playlists.playlists);
     const [nameTouched, toggleNameTouched] = useState(false);
-    const [contextTouched, toggleContextTouched] = useState(false);
-    const newId = playlist.length;
+    const [contextTouched, toggleContextTouched] = useState(true);
+    const newId = playlist.reduce((max, playlist) => max > playlist.id ? max : playlist.id) + 1;
+    console.log(newId);
     const onSubmit = () => {
-        if (playlistName !== "" && playlistContext !== "") {
-            dispatch(pushPlaylist({name: playlistName, context: playlistContext, id: newId}));
-            dispatch(reset());
-            navigate('/playlists');
+        if (playlistName !== "" && playlistContext !== "" && playlistName.length >= 3 && playlistName.length <= 15) {
+            spotifyApi.getMe().then((data) => {
+                dispatch(pushPlaylist({username: data.body.display_name, name: playlistName, context: playlistContext, id: newId}));
+                dispatch(reset());
+                navigate('/');
+            }).catch(() => {
+                console.log("failed to get me");
+            })
         } else {
             toggleNameTouched(true);
-            toggleContextTouched(true);
         }
     }
     return (
         <div>
-            <Form className={"d-flex justify-content-center"}>
+            <Form className={"d-flex justify-content-center"} onSubmit={(obj) => {
+                obj.preventDefault();
+            }}>
                 <div className={"col-6 mt-5"}>
                     <h2 className={"text-white-50"}>Create new playlist</h2>
                     <FormGroup floating className={"mt-3"}>
-                        <Input valid={playlistName !== ""} invalid={playlistName === "" && nameTouched}
+                        <Input valid={playlistName !== "" && playlistName.length >= 3 && playlistName.length <= 15}
+                               invalid={(playlistName.length < 3 || playlistName.length > 15 || playlistName === "") && nameTouched}
                                placeholder={"Name"}
                                onClick={() => toggleNameTouched(true)}
+                               value={playlistName}
                                onChange={(data) => {
                                    dispatch(updateName(data.target.value))
                                }}/>
                         <Label for={"playlistName"}>Enter playlist name</Label>
                         {playlistName === "" && <FormFeedback>Playlist name is required!</FormFeedback>}
+                        {(playlistName.length < 3 || playlistName.length > 15) && <FormFeedback>Playlist name length should be from 3 to 15 symbols!</FormFeedback>}
                     </FormGroup>
                     <FormGroup>
                         <Input valid={playlistContext !== ""} invalid={playlistContext === "" && contextTouched}
                                bsSize={"lg"}
                                placeholder={"Choose context"} type={"select"}
                                onClick={() => toggleContextTouched(true)}
+                               value={playlistContext}
                                onChange={(data) => {
                                    dispatch(updateContext(data.target.value))
                                }}>
-                            <option disabled hidden selected>
-                                Choose context
-                            </option>
                             <option>
                                 Context 1
                             </option>
