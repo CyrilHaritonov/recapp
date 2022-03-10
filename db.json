@@ -6,6 +6,94 @@
       "name": "First playlist",
       "date": "2012-10-16T17:57:28.556094Z",
       "thumbnail": "/img/pic1.jpg",
+      "context": "Context 1",
+      "songs": [
+        {
+          "name": "hjujruy",
+          "thumbnail": "/img/pic2.jpg",
+          "length": "3:20",
+          "number": 4,
+          "author": "urjuyj",
+          "id": 1684,
+          "playlistId": 0
+        },
+        {
+          "name": "afddadf",
+          "thumbnail": "/img/pic3.jpg",
+          "length": "3:20",
+          "number": 0,
+          "author": "dfsadf",
+          "id": 1629,
+          "playlistId": 0
+        },
+        {
+          "name": "dfkadsf",
+          "thumbnail": "/img/pic1.jpg",
+          "length": "3:20",
+          "number": 0,
+          "author": "dfadsf",
+          "id": 5238,
+          "playlistId": 0
+        },
+        {
+          "name": "dfkadsf",
+          "thumbnail": "/img/pic1.jpg",
+          "length": "3:20",
+          "number": 7,
+          "author": "dfadsf",
+          "id": 1466,
+          "playlistId": 0
+        },
+        {
+          "name": "afddadf",
+          "thumbnail": "/img/pic3.jpg",
+          "length": "3:20",
+          "number": 0,
+          "author": "dfsadf",
+          "id": 7979,
+          "playlistId": 0
+        },
+        {
+          "name": "afddadf",
+          "thumbnail": "/img/pic3.jpg",
+          "length": "3:20",
+          "number": 7,
+          "author": "dfsadf",
+          "id": 5725,
+          "playlistId": 0
+        },
+        {
+          "name": "fgfgaffa",
+          "author": "aedfdsaf",
+          "thumbnail": "/img/pic1.jpg",
+          "length": "3:20",
+          "preview": "link",
+          "id": 8254
+        },
+        {
+          "name": "fgfgaffa",
+          "author": "aedfdsaf",
+          "thumbnail": "/img/pic1.jpg",
+          "length": "3:20",
+          "preview": "link",
+          "id": 8278
+        },
+        {
+          "name": "kglbosgfh",
+          "author": "fasd",
+          "thumbnail": "/img/pic4.jpg",
+          "length": "3:20",
+          "preview": "link",
+          "id": 464
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Forth playlist",
+      "date": "2015-10-16T17:57:28.556094Z",
+      "thumbnail": "/img/pic4.jpg",
+      "context": "Context 1",
       "songs": [
         {
           "name": "Harder, Better, Faster, Stronger",
