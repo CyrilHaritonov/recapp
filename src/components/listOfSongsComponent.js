@@ -1,11 +1,13 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {
     Button,
     ButtonGroup,
-    Form, FormFeedback,
+    Form,
+    FormFeedback,
     FormGroup,
     Input,
     Label,
+    ListGroup,
     Modal,
     ModalBody,
     ModalFooter,
@@ -20,6 +22,8 @@ import {clearPickedSong, clearPlaylist, putPlaylist, setPlaylist} from "../redux
 import {deletePlaylist, update, updateSingle} from "../redux/reducers/playlists";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPen} from "@fortawesome/free-solid-svg-icons";
+import {spotifyApi} from "./headerComponent";
+import {SearchResult} from "./searchResultComponent";
 
 export const ListOfSongsComponent = () => {
     const playlists = useSelector(state => state.playlists.playlists);
@@ -48,16 +52,44 @@ export const ListOfSongsComponent = () => {
     const [isRenameModalOpen, toggleRenameModal] = useState(false);
     const [newName, changeNewName] = useState("");
     const [newNameTouched, toggleNewNameTouched] = useState(false);
+    const [search, setSearch] = useState("");
+    const [searchResults, setSearchResults] = useState([]);
+
+    useEffect(() => {
+        if (!search) return setSearchResults([]);
+        //console.log(searchResults);
+        let cancel = false;
+        spotifyApi.searchTracks(search, {limit: 10}).then(res => {
+            if (cancel) return;
+            setSearchResults(res.body.tracks.items.map(track => {
+                const largestAlbumImage = track.album.images.reduce((largest, image) => {
+                    if (image.height > largest.height) return image;
+                    return largest;
+                }, track.album.images[0]);
+
+                return {
+                    artist: track.artists[0].name,
+                    title: track.name,
+                    uri: track.uri,
+                    albumUri: largestAlbumImage.url,
+                    duration: track.duration_ms
+                }
+            })
+        )});
+        return () => (cancel = true);
+    }, [search]);
+
+
     return (
         <>
             <Row>
                 <div style={{height: "300px"}}
                      className={"d-flex align-items-center col-md-12 col-lg-3 justify-content-center"}>
                     <img className={"cover"}
-                         src={pickedPlaylist?.songs[0]?.thumbnail !== undefined ? pickedPlaylist?.songs[0].thumbnail : "/img/default.jpg"}
+                         src={pickedPlaylist?.songs[0]?.thumbnail ? pickedPlaylist.songs[0].thumbnail : "/img/default.jpg"}
                          alt={pickedPlaylist.name}
                          style={{height: "200px"}}/>
-                    <img src={pickedPlaylist?.songs[0]?.thumbnail !== undefined ? pickedPlaylist?.songs[0].thumbnail : "/img/default.jpg"} style={{zIndex: "-2"}} alt={pickedPlaylist.name}
+                    <img src={pickedPlaylist?.songs[0]?.thumbnail ? pickedPlaylist.songs[0].thumbnail : "/img/default.jpg"} style={{zIndex: "-2"}} alt={pickedPlaylist.name}
                          className={"blurred"}/>
                 </div>
                 <div
@@ -126,9 +158,12 @@ export const ListOfSongsComponent = () => {
                         </div>
                         <Form className={"col-12 col-lg-7 ms-lg-auto"} inline>
                             <FormGroup floating className={"ms-lg-0"}>
-                                <Input className={"mt-lg-5"} name={"searchForSongs"} placeholder={"Search for s song"}
-                                       id={"songSearch"} style={{opacity: "1"}}/>
+                                <Input className={"mt-lg-5"} autoComplete={"off"} name={"searchForSongs"} placeholder={"Search for s song"} type={"search"}
+                                       id={"songSearch"} value={search} onChange={e => setSearch(e.target.value)} style={{opacity: "1"}}/>
                                 <Label for={"songSearch"}>Search for a song</Label>
+                                {search.length !== 0 && <ListGroup className={"searchSuggestions"} style={{position: "absolute", height: "300px", overflowY: "auto", zIndex: "1000"}}>
+                                    {searchResults.map(result => <SearchResult title={result.title} author={result.artist} thumbnail={result.albumUri} id={result.uri} duration={result.duration}/>)}
+                                </ListGroup>}
                             </FormGroup>
                         </Form>
                     </Row>
@@ -170,7 +205,7 @@ export const ListOfSongsComponent = () => {
                     </ButtonGroup>
                 </ModalFooter>
             </Modal>
-            <Modal isOpen={isRenameModalOpen} toggle={() => toggleRenameModal(false)} style={{marginTop: "40vh"}}>
+            <Modal isOpen={isRenameModalOpen} toggle={() => toggleRenameModal(false)} style={{marginTop: "30vh"}}>
                 <ModalHeader toggle={() => toggleRenameModal(false)} className={"bg-dark text-white-50 border-0"}>
                     Rename playlist
                 </ModalHeader>

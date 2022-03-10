@@ -7,7 +7,7 @@ const loginSlice = createSlice({
     },
     reducers: {
         update: (state) => {
-            state.status = !state.status;
+            state.status = !!localStorage.getItem("accessToken");
         }
     }
 });

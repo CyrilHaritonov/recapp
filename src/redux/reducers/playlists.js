@@ -1,11 +1,12 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {serverAddress} from "../../shared/serverAddress";
+import {spotifyApi} from "../../components/headerComponent";
 
 export const getPlaylists = createAsyncThunk(
     'playlists/getPlaylists',
-    async () => {
+    async (username) => {
         return (
-            fetch(serverAddress + 'playlists')
+            fetch(serverAddress + 'playlists' + "?user=" + username)
                 .then(response => {
                         if (!response.ok) {
                             console.log("Server failed to serve playlists.");

@@ -11,7 +11,7 @@ import RequireAuth from "./components/requireAuth";
 import SubscriptionComponent from "./components/subscriptionComponent";
 
 function App() {
-  return (
+    return (
     <>
         <BrowserRouter>
             <HeaderComponent/>

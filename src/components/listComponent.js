@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Card, CardBody, CardTitle, Row, Spinner} from "reactstrap";
 import {PlaylistComponent} from "./playlistComponent";
 import {useSelector} from "react-redux";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSquarePlus} from "@fortawesome/free-regular-svg-icons";
 import {Link} from "react-router-dom";
+import {spotifyApi} from "./headerComponent";
 
 export const ListComponent = () => {
     const playlists = useSelector(state => state.playlists.playlists);
@@ -15,8 +16,8 @@ export const ListComponent = () => {
             return (
                 <>
                     <Row className="justify-content-center">
-                        {playlists.map(playlist => <PlaylistComponent name={playlist.name} date={playlist.date}
-                                                                      imgSrc={playlist?.songs[0]?.thumbnail !== undefined ? playlist?.songs[0].thumbnail : "/img/default.jpg"} key={playlist.id}
+                        {playlists.map((playlist, index) => <PlaylistComponent name={playlist.name} date={playlist.date}
+                                                                      imgSrc={playlist?.songs[0]?.thumbnail ? playlist.songs[0].thumbnail: "/img/default.jpg"} key={playlist.id}
                                                                       id={playlist.id}/>)}
                         <div className="col-12 col-md-3 m-2 d-flex align-items-center justify-content-center">
                             <Link to={"/newplaylist"}>

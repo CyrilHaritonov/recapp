@@ -2,7 +2,8 @@
   "playlists": [
     {
       "id": 0,
-      "name": "Test name",
+      "user": "mrsup23",
+      "name": "First playlist",
       "date": "2012-10-16T17:57:28.556094Z",
       "thumbnail": "/img/pic1.jpg",
       "context": "Context 1",
@@ -95,404 +96,98 @@
       "context": "Context 1",
       "songs": [
         {
-          "name": "Song",
-          "author": "Author",
-          "thumbnail": "/img/pic3.jpg",
-          "length": "2:20",
-          "preview": "link",
-          "id": 0
-        },
-        {
-          "name": "Song2",
-          "author": "Author",
-          "thumbnail": "/img/pic2.jpg",
-          "length": "2:20",
-          "preview": "link",
-          "id": 1
-        },
-        {
-          "name": "Song4",
-          "author": "Author",
-          "thumbnail": "/img/pic2.jpg",
-          "length": "2:20",
-          "preview": "link",
-          "id": 3
-        },
-        {
-          "name": "Song5",
-          "author": "Author",
-          "thumbnail": "/img/pic3.jpg",
-          "length": "2:20",
-          "preview": "link",
-          "id": 4
-        }
-      ]
-    },
-    {
-      "id": 5,
-      "name": "First playlist",
-      "date": "2012-10-16T17:57:28.556094Z",
-      "thumbnail": "/img/pic1.jpg",
-      "context": "Context 1",
-      "songs": [
-        {
-          "name": "dfkadsf",
-          "thumbnail": "/img/pic1.jpg",
-          "length": "3:20",
-          "number": 1,
-          "author": "dfadsf",
-          "id": 9564,
-          "playlistId": 5
-        },
-        {
-          "name": "afddadf",
-          "author": "dfsadf",
-          "thumbnail": "/img/pic3.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 6323
-        }
-      ]
-    },
-    {
-      "id": 6,
-      "name": "Second playlist",
-      "date": "2013-10-16T17:57:28.556094Z",
-      "thumbnail": "/img/pic2.jpg",
-      "context": "Context 1",
-      "songs": [
-        {
-          "name": "dfkadsf",
-          "thumbnail": "/img/pic1.jpg",
-          "length": "3:20",
+          "name": "Harder, Better, Faster, Stronger",
+          "thumbnail": "https://i.scdn.co/image/ab67616d0000b273b33d46dfa2635a47eebf63b2",
+          "length": "4:04",
           "number": 2,
-          "author": "dfadsf",
-          "id": 3095,
-          "playlistId": 6
+          "author": "Daft Punk",
+          "id": "spotify:track:5W3cjX2J3tjhG8zb6u0qHn",
+          "playlistId": 0
         },
         {
-          "name": "kglbosgfh",
-          "author": "fasd",
-          "thumbnail": "/img/pic4.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 645
+          "name": "Get Lucky (feat. Pharrell Williams & Nile Rodgers) - Radio Edit",
+          "author": "Daft Punk",
+          "thumbnail": "https://i.scdn.co/image/ab67616d0000b2731d5cf960a92bb8b03fc2be7f",
+          "length": "4:04",
+          "id": "spotify:track:2Foc5Q5nqNiosCNqttzHof"
         },
         {
-          "name": "afddadf",
-          "author": "dfsadf",
-          "thumbnail": "/img/pic3.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 1176
+          "name": "astral step",
+          "author": "shadowraze",
+          "thumbnail": "https://i.scdn.co/image/ab67616d0000b273209b4ad8dd5fe857f18e0ba6",
+          "length": "2:02",
+          "id": "spotify:track:47iHvzU9Po0e6raFlgLBOF"
+        },
+        {
+          "name": "Around the World",
+          "author": "Daft Punk",
+          "thumbnail": "https://i.scdn.co/image/ab67616d0000b2738ac778cc7d88779f74d33311",
+          "length": "7:07",
+          "id": "spotify:track:1pKYYY0dkg23sQQXi0Q5zN"
+        },
+        {
+          "name": "Starboy",
+          "author": "The Weeknd",
+          "thumbnail": "https://i.scdn.co/image/ab67616d0000b2734718e2b124f79258be7bc452",
+          "length": "4:04",
+          "id": "spotify:track:7MXVkk9YMctZqd1Srtv4MB"
+        },
+        {
+          "name": "Robot Rock",
+          "author": "Daft Punk",
+          "thumbnail": "https://i.scdn.co/image/ab67616d0000b2732ed719bad67261c7bf090c70",
+          "length": "5:05",
+          "id": "spotify:track:7LL40F6YdZgeiQ6en1c7Lk"
         }
       ]
     },
     {
-      "id": 7,
-      "name": "Forth playlist",
-      "date": "2015-10-16T17:57:28.556094Z",
-      "thumbnail": "/img/pic4.jpg",
-      "context": "Context 1",
-      "songs": [
-        {
-          "name": "kglbosgfh",
-          "thumbnail": "/img/pic4.jpg",
-          "length": "3:20",
-          "number": 1,
-          "author": "fasd",
-          "id": 7836,
-          "playlistId": 7
-        },
-        {
-          "name": "afddadf",
-          "author": "dfsadf",
-          "thumbnail": "/img/pic3.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 6889
-        }
-      ]
-    },
-    {
-      "id": 8,
-      "name": "Fifth playlist",
-      "date": "2015-10-16T17:57:28.556094Z",
-      "thumbnail": "/img/pic4.jpg",
-      "context": "Context 1",
-      "songs": [
-        {
-          "name": "dfadfasdf",
-          "thumbnail": "/img/pic2.jpg",
-          "length": "3:20",
-          "number": 4,
-          "author": "gfghfhdf",
-          "id": 4468,
-          "playlistId": 8
-        },
-        {
-          "name": "fgfgaffa",
-          "author": "aedfdsaf",
-          "thumbnail": "/img/pic1.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 4490
-        },
-        {
-          "name": "afddadf",
-          "author": "dfsadf",
-          "thumbnail": "/img/pic3.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 1726
-        },
-        {
-          "name": "afddadf",
-          "author": "dfsadf",
-          "thumbnail": "/img/pic3.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 357
-        },
-        {
-          "name": "afddadf",
-          "author": "dfsadf",
-          "thumbnail": "/img/pic3.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 4998
-        }
-      ]
-    },
-    {
-      "id": 13,
-      "name": "вафвафыва",
-      "date": "2022-02-02T15:42:29.434Z",
+      "user": "mrsup23",
+      "id": 3,
+      "name": "check",
+      "date": "2022-03-10T19:53:48.709Z",
       "thumbnail": "/img/default.jpg",
       "songs": [
         {
-          "name": "afddadf",
-          "author": "dfsadf",
-          "thumbnail": "/img/pic3.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 7780
-        },
-        {
-          "name": "afddadf",
-          "author": "dfsadf",
-          "thumbnail": "/img/pic3.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 8573
-        },
-        {
-          "name": "hjujruy",
-          "author": "urjuyj",
-          "thumbnail": "/img/pic2.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 6335
-        }
-      ],
-      "context": "Context 3"
-    },
-    {
-      "id": 14,
-      "name": "dfadsfads",
-      "date": "2022-02-02T16:17:49.704Z",
-      "thumbnail": "/img/default.jpg",
-      "songs": [
-        {
-          "name": "fgfgaffa",
-          "author": "aedfdsaf",
-          "thumbnail": "/img/pic1.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 2788
-        }
-      ],
-      "context": "Context 3"
-    },
-    {
-      "id": 10,
-      "name": "Supa",
-      "date": "2022-02-05T22:51:19.530Z",
-      "thumbnail": "/img/default.jpg",
-      "songs": [
-        {
-          "name": "afddadf",
-          "author": "dfsadf",
-          "thumbnail": "/img/pic3.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 9213
+          "name": "Нужен Xanax",
+          "author": "Паша Техник",
+          "thumbnail": "https://i.scdn.co/image/ab67616d0000b27389038ccaa76ad42c9d3f14bc",
+          "length": "4:04",
+          "id": "spotify:track:2Ih1HRxEm2WCgqAdfiuIXx"
         }
       ],
       "context": "Context 1"
     },
     {
-      "id": 11,
-      "name": "Super",
-      "date": "2022-02-05T23:05:52.830Z",
+      "user": "mrsup23",
+      "id": 4,
+      "name": "third",
+      "date": "2022-03-10T19:54:13.049Z",
       "thumbnail": "/img/default.jpg",
       "songs": [
         {
-          "name": "dfkadsf",
-          "author": "dfadsf",
-          "thumbnail": "/img/pic1.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 61
-        },
-        {
-          "name": "hjujruy",
-          "author": "urjuyj",
-          "thumbnail": "/img/pic2.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 2074
-        },
-        {
-          "name": "afddadf",
-          "author": "dfsadf",
-          "thumbnail": "/img/pic3.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 6174
+          "name": "Всё идёт по плану",
+          "author": "Гражданская Оборона",
+          "thumbnail": "https://i.scdn.co/image/ab67616d0000b2738ee149a9ea6c2a2f64ed7e5b",
+          "length": "5:05",
+          "id": "spotify:track:2f8yKdBQmCObxhScin20iB"
         }
       ],
       "context": "Context 1"
     },
     {
-      "id": 12,
-      "name": "Check",
-      "date": "2022-02-05T23:06:23.343Z",
+      "user": "mrsup23",
+      "id": 5,
+      "name": "test",
+      "date": "2022-03-10T20:02:09.786Z",
       "thumbnail": "/img/default.jpg",
       "songs": [
         {
-          "name": "dfadfasdf",
-          "author": "gfghfhdf",
-          "thumbnail": "/img/pic2.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 5304
-        }
-      ],
-      "context": "Context 2"
-    },
-    {
-      "id": 15,
-      "name": "dfadsfds",
-      "date": "2022-02-09T13:32:26.522Z",
-      "thumbnail": "/img/default.jpg",
-      "songs": [
-        {
-          "name": "kglbosgfh",
-          "author": "fasd",
-          "thumbnail": "/img/pic4.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 1120
-        },
-        {
-          "name": "fgfgaffa",
-          "author": "aedfdsaf",
-          "thumbnail": "/img/pic1.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 5631
-        },
-        {
-          "name": "afddadf",
-          "author": "dfsadf",
-          "thumbnail": "/img/pic3.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 822
-        }
-      ],
-      "context": "Context 1"
-    },
-    {
-      "id": 16,
-      "name": "Godlike name",
-      "date": "2022-02-09T17:29:14.414Z",
-      "thumbnail": "/img/default.jpg",
-      "songs": [
-        {
-          "name": "hjujruy",
-          "author": "urjuyj",
-          "thumbnail": "/img/pic2.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 2100
-        },
-        {
-          "name": "dfkadsf",
-          "author": "dfadsf",
-          "thumbnail": "/img/pic1.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 5811
-        }
-      ],
-      "context": "Context 1"
-    },
-    {
-      "id": 17,
-      "name": "Test 01.03.2022",
-      "date": "2022-03-01T13:28:57.274Z",
-      "thumbnail": "/img/default.jpg",
-      "songs": [
-        {
-          "name": "kglbosgfh",
-          "author": "fasd",
-          "thumbnail": "/img/pic4.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 3037
-        },
-        {
-          "name": "fgfgaffa",
-          "author": "aedfdsaf",
-          "thumbnail": "/img/pic1.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 528
-        },
-        {
-          "name": "afddadf",
-          "author": "dfsadf",
-          "thumbnail": "/img/pic3.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 8835
-        }
-      ],
-      "context": "Context 4"
-    },
-    {
-      "id": 18,
-      "name": "выавыафвы",
-      "date": "2022-03-01T13:49:59.723Z",
-      "thumbnail": "/img/default.jpg",
-      "songs": [
-        {
-          "name": "kglbosgfh",
-          "author": "fasd",
-          "thumbnail": "/img/pic4.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 359
-        },
-        {
-          "name": "fgfgaffa",
-          "author": "aedfdsaf",
-          "thumbnail": "/img/pic1.jpg",
-          "length": "3:20",
-          "preview": "link",
-          "id": 4650
+          "name": "The Final Episode (Let's Change Channel)",
+          "author": "Asking Alexandria",
+          "thumbnail": "https://i.scdn.co/image/ab67616d0000b273f33d30f467a7998ecdfd00ab",
+          "length": "4:04",
+          "id": "spotify:track:0CqCpm4LLQbHUX5ysizWJS"
         }
       ],
       "context": "Context 3"
