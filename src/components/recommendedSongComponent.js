@@ -12,7 +12,7 @@ const RecommendedSong = ({title, author, thumbnail, id}) => {
     const dispatch = useDispatch();
     return (
         <div>
-            <ListGroupItem className={"bg-dark recommendedSong " + (isPlaying === id ? "isPlaying" : "")} style={{width: "100%"}} onMouseEnter={() => toggleHover(true)}
+            <ListGroupItem className={"bg-dark recommendedSong " + (isPlaying === id ? "isPlaying" : "")} style={{minWidth: "180px"}} onMouseEnter={() => toggleHover(true)}
                            onMouseLeave={() => toggleHover(false)}>
                 <div className={"d-flex ps-3 pt-3 pe-3"}>
                     <div className={"flex-shrink-0"} onClick={() => {
@@ -39,7 +39,7 @@ const RecommendedSong = ({title, author, thumbnail, id}) => {
                         <p className={"mb-0"}>{title}</p>
                         <p className={"mt-0"}>{author}</p>
                         {isOnHover && <FontAwesomeIcon icon={faPlus}
-                                                       style={{position: "absolute", left: "170", top: "30", fontSize: "2rem", color: "white"}}
+                                                       style={{position: "absolute", right: "15", top: "30", fontSize: "2rem", color: "white"}}
                                                        onClick={() => {
                                                            dispatch(addSong({
                                                                name: title,

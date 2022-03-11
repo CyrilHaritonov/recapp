@@ -50,6 +50,13 @@
           "thumbnail": "https://i.scdn.co/image/ab67616d0000b2732ed719bad67261c7bf090c70",
           "length": "5:05",
           "id": "spotify:track:7LL40F6YdZgeiQ6en1c7Lk"
+        },
+        {
+          "name": "The Final Episode (Let's Change Channel)",
+          "author": "Asking Alexandria",
+          "thumbnail": "https://i.scdn.co/image/ab67616d0000b273f33d30f467a7998ecdfd00ab",
+          "length": "4:04",
+          "id": "spotify:track:0CqCpm4LLQbHUX5ysizWJS"
         }
       ]
     },
@@ -95,11 +102,40 @@
       "thumbnail": "/img/default.jpg",
       "songs": [
         {
+          "name": "Existence",
+          "thumbnail": "https://i.scdn.co/image/ab67616d0000b2733670fa5ac2f5914fc57a7c54",
+          "length": "2:15",
+          "number": 3,
+          "author": "Dodsa Rali",
+          "id": "spotify:track:6iQixuJwOPBH60yG3vXVLS",
+          "playlistId": 5
+        },
+        {
           "name": "The Final Episode (Let's Change Channel)",
-          "author": "Asking Alexandria",
           "thumbnail": "https://i.scdn.co/image/ab67616d0000b273f33d30f467a7998ecdfd00ab",
           "length": "4:04",
-          "id": "spotify:track:0CqCpm4LLQbHUX5ysizWJS"
+          "number": 0,
+          "author": "Asking Alexandria",
+          "id": "spotify:track:0CqCpm4LLQbHUX5ysizWJS",
+          "playlistId": 5
+        },
+        {
+          "name": "Check",
+          "thumbnail": "https://i.scdn.co/image/ab67616d0000b2734c494bb356740b85c60ebe65",
+          "length": "3:53",
+          "number": 3,
+          "author": "Showbiz School",
+          "id": "spotify:track:4MHV6ICHo1nTulMikPWULs",
+          "playlistId": 5
+        },
+        {
+          "name": "FDS",
+          "thumbnail": "https://i.scdn.co/image/ab67616d0000b273a59ba67d73351c2ff80aeb32",
+          "length": "2:02",
+          "number": 0,
+          "author": "Jarv",
+          "id": "spotify:track:0Oh9SgebcV1bWeH8CBCKVv",
+          "playlistId": 5
         }
       ],
       "context": "Context 3"
