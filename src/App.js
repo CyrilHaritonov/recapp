@@ -9,6 +9,7 @@ import {NotFoundComponent} from "./components/notFoundComponent";
 import CreateNewPlaylistComponent from "./components/createNewPlaylistComponent";
 import RequireAuth from "./components/requireAuth";
 import SubscriptionComponent from "./components/subscriptionComponent";
+import Player from "./components/playerComponent";
 
 function App() {
     return (
@@ -24,6 +25,7 @@ function App() {
                     <Route path={'/subscription'} element={<SubscriptionComponent />}/>
                 </Routes>
             </Container>
+            <Player/>
         </BrowserRouter>
     </>
   );

@@ -54,6 +54,8 @@ export const ListOfSongsComponent = () => {
     const [newNameTouched, toggleNewNameTouched] = useState(false);
     const [search, setSearch] = useState("");
     const [searchResults, setSearchResults] = useState([]);
+    const [exportModal, toggleExportModal] = useState(false);
+    const [successExportModal, toggleSuccessExportModal] = useState(false);
 
     useEffect(() => {
         if (!search) return setSearchResults([]);
@@ -123,7 +125,11 @@ export const ListOfSongsComponent = () => {
                                 style={{backgroundColor: "rgba(0, 0, 0, 0.6)", color: "white", borderColor: "black"}}>Delete
                             playlist</Button>
                         <Button className={"playlistOptions"}
-                                style={{backgroundColor: "rgba(0, 0, 0, 0.6)", color: "white", borderColor: "black"}}>Export
+                                style={{backgroundColor: "rgba(0, 0, 0, 0.6)", color: "white", borderColor: "black"}}
+                        onClick={() => {
+                            toggleExportModal(true);
+                        }
+                        }>Export
                             to Spotify</Button>
                     </ButtonGroup>
                 </div>}
@@ -233,6 +239,56 @@ export const ListOfSongsComponent = () => {
                             toggleNewNameTouched(true);
                         }
                     }}>Rename</Button>
+                </ModalFooter>
+            </Modal>
+            <Modal isOpen={exportModal} toggle={() => toggleExportModal(!exportModal)}
+                   style={{marginTop: "40vh"}}>
+                <ModalHeader toggle={() => toggleExportModal(!exportModal)}
+                             className={"bg-dark text-white-50 border-0"}>
+                    Are you sure that you want to export {pickedPlaylist.name} playlist?
+                </ModalHeader>
+                <ModalFooter className={"bg-dark border-0 d-flex justify-content-start"}>
+                    <ButtonGroup>
+                        <Button color={"success"} onClick={() => {
+                            toggleExportModal(!exportModal);
+                            spotifyApi.createPlaylist(pickedPlaylist.name, {
+                                'description': 'Created using Recapp'
+                            }).then((data) => {
+                                //console.log(data);
+                                spotifyApi.addTracksToPlaylist(data.body.id, pickedPlaylist.songs.map(song => song.id)).then(() => {
+                                        toggleSuccessExportModal(true);
+                                    }
+                                ).catch((err) => {
+                                    console.log(err);
+                                })
+                            }).catch((err) => {
+                                console.log(err);
+                            })
+                        }}>
+                            Export
+                        </Button>
+                        <Button onClick={() => {
+                            toggleExportModal(!exportModal)
+                        }}>
+                            Cancel
+                        </Button>
+                    </ButtonGroup>
+                </ModalFooter>
+            </Modal>
+            <Modal isOpen={successExportModal} toggle={() => toggleSuccessExportModal(!successExportModal)}
+                   style={{marginTop: "40vh"}}>
+                <ModalHeader toggle={() => toggleSuccessExportModal(!successExportModal)}
+                             className={"bg-dark text-white-50 border-0"}>
+                    Your playlist was successfully exported to spotify.
+                </ModalHeader>
+                <ModalFooter className={"bg-dark border-0 d-flex justify-content-start"}>
+                    <ButtonGroup>
+                        <Button color={"success"} onClick={() => {
+                            toggleSuccessExportModal(!successExportModal);
+                        }}>
+                            Ok
+                        </Button>
+                    </ButtonGroup>
                 </ModalFooter>
             </Modal>
             <FooterComponent playlistId={pickedPlaylist.id}/>

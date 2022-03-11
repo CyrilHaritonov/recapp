@@ -45,7 +45,7 @@ export const SearchResult = ({title, author, thumbnail, id, duration}) => {
                                                                name: title,
                                                                author,
                                                                thumbnail,
-                                                               length: `${Math.round((duration/1000)/60)}`+":"+`${Math.round((duration/1000)/60) < 10 ? "0" : ""}`+`${Math.round((duration/1000)/60)}`,
+                                                               length: `${Math.round((duration/1000)/60)}`+":"+`${Math.round((duration/1000)%60) < 10 ? "0" : ""}`+`${Math.round((duration/1000)%60)}`,
                                                                id
                                                            }))
                                                        }}

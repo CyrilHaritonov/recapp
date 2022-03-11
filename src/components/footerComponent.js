@@ -10,7 +10,7 @@ export const FooterComponent = ({playlistId}) => {
     if (isBeingEdited === playlistId) {
         return (
             <>
-                <div  className={"fixed-bottom bg-dark"}>
+                <div style={{marginBottom: "50px"}} className={"fixed-bottom bg-dark"}>
                     <ListGroup style={{height: "100px"}} className={"bottomRecs d-flex flex-row align-items-center"} horizontal>
                         {recdSongs.map(song => <RecommendedSong id={song.id} title={song.title} author={song.author} thumbnail={song.thumbnail}/>)}
                     </ListGroup>
