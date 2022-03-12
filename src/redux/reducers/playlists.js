@@ -1,6 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {serverAddress} from "../../shared/serverAddress";
-import {spotifyApi} from "../../components/headerComponent";
 
 export const getPlaylists = createAsyncThunk(
     'playlists/getPlaylists',

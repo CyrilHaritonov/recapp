@@ -24,6 +24,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPen} from "@fortawesome/free-solid-svg-icons";
 import {spotifyApi} from "./headerComponent";
 import {SearchResult} from "./searchResultComponent";
+import {reset} from "../redux/reducers/recommendedSongs";
+import {serverAddress} from "../shared/serverAddress";
 
 export const ListOfSongsComponent = () => {
     const playlists = useSelector(state => state.playlists.playlists);
@@ -64,20 +66,21 @@ export const ListOfSongsComponent = () => {
         spotifyApi.searchTracks(search, {limit: 10}).then(res => {
             if (cancel) return;
             setSearchResults(res.body.tracks.items.map(track => {
-                const largestAlbumImage = track.album.images.reduce((largest, image) => {
-                    if (image.height > largest.height) return image;
-                    return largest;
-                }, track.album.images[0]);
+                    const largestAlbumImage = track.album.images.reduce((largest, image) => {
+                        if (image.height > largest.height) return image;
+                        return largest;
+                    }, track.album.images[0]);
 
-                return {
-                    artist: track.artists[0].name,
-                    title: track.name,
-                    uri: track.uri,
-                    albumUri: largestAlbumImage.url,
-                    duration: track.duration_ms
-                }
-            })
-        )});
+                    return {
+                        artist: track.artists[0].name,
+                        title: track.name,
+                        uri: track.uri,
+                        albumUri: largestAlbumImage.url,
+                        duration: track.duration_ms
+                    }
+                })
+            )
+        });
         return () => (cancel = true);
     }, [search]);
 
@@ -88,19 +91,23 @@ export const ListOfSongsComponent = () => {
                 <div style={{height: "300px"}}
                      className={"d-flex align-items-center col-md-12 col-lg-3 justify-content-center"}>
                     <img className={"cover"}
-                         src={pickedPlaylist?.songs[0]?.thumbnail ? pickedPlaylist.songs[0].thumbnail : "/img/default.jpg"}
+                         src={pickedPlaylist?.songs[0]?.thumbnail ? pickedPlaylist.songs[0].thumbnail : serverAddress + "img/default.jpg"}
                          alt={pickedPlaylist.name}
                          style={{height: "200px"}}/>
-                    <img src={pickedPlaylist?.songs[0]?.thumbnail ? pickedPlaylist.songs[0].thumbnail : "/img/default.jpg"} style={{zIndex: "-2"}} alt={pickedPlaylist.name}
-                         className={"blurred"}/>
+                    <img
+                        src={pickedPlaylist?.songs[0]?.thumbnail ? pickedPlaylist.songs[0].thumbnail : serverAddress + "img/default.jpg"}
+                        style={{zIndex: "-2"}} alt={pickedPlaylist.name}
+                        className={"blurred"}/>
                 </div>
                 <div
                     className={"d-flex flex-column ms-lg-0 align-items-center align-items-lg-start justify-content-center mb-5 text-white col-md-12 col-lg-4"}>
-                    <h1>{isBeingEdited ? playlistCurrBeingEdited.name : pickedPlaylist.name} {isBeingEdited ? <FontAwesomeIcon icon={faPen} style={{fontSize: "1.3rem", marginBottom: "5px"}} className={"editNameOnHover"} onClick={
-                        () => {
-                            toggleRenameModal(true);
-                        }
-                    }/>: ""} </h1>
+                    <h1>{isBeingEdited ? playlistCurrBeingEdited.name : pickedPlaylist.name} {isBeingEdited ?
+                        <FontAwesomeIcon icon={faPen} style={{fontSize: "1.3rem", marginBottom: "5px"}}
+                                         className={"editNameOnHover"} onClick={
+                            () => {
+                                toggleRenameModal(true);
+                            }
+                        }/> : ""} </h1>
                     <div>Number of songs: {pickedPlaylist.songs.length}</div>
                     <div>Created on: {new Intl.DateTimeFormat('en-US', {
                         year: 'numeric',
@@ -126,10 +133,10 @@ export const ListOfSongsComponent = () => {
                             playlist</Button>
                         <Button className={"playlistOptions"}
                                 style={{backgroundColor: "rgba(0, 0, 0, 0.6)", color: "white", borderColor: "black"}}
-                        onClick={() => {
-                            toggleExportModal(true);
-                        }
-                        }>Export
+                                onClick={() => {
+                                    toggleExportModal(true);
+                                }
+                                }>Export
                             to Spotify</Button>
                     </ButtonGroup>
                 </div>}
@@ -150,6 +157,7 @@ export const ListOfSongsComponent = () => {
                                             dispatch(updateSingle(playlistCurrBeingEdited));
                                             dispatch(clearPlaylist());
                                             dispatch(clearPickedSong());
+                                            dispatch(reset());
                                         }}>Save Changes</Button>
                                 <Button className={"playlistOptions"} style={{
                                     backgroundColor: "rgba(0, 0, 0, 0.6)",
@@ -159,16 +167,28 @@ export const ListOfSongsComponent = () => {
                                 }}
                                         onClick={() => {
                                             dispatch(clearPlaylist());
+                                            dispatch(reset());
                                         }}>Cancel</Button>
                             </ButtonGroup>
                         </div>
                         <Form className={"col-12 col-lg-7 ms-lg-auto"} inline>
                             <FormGroup floating className={"ms-lg-0"}>
-                                <Input className={"mt-lg-5"} autoComplete={"off"} name={"searchForSongs"} placeholder={"Search for s song"} type={"search"}
-                                       id={"songSearch"} value={search} onChange={e => setSearch(e.target.value)} style={{opacity: "1"}}/>
+                                <Input className={"mt-lg-5"} autoComplete={"off"} name={"searchForSongs"}
+                                       placeholder={"Search for s song"} type={"search"}
+                                       id={"songSearch"} value={search} onChange={e => setSearch(e.target.value)}
+                                       style={{opacity: "1"}}/>
                                 <Label for={"songSearch"}>Search for a song</Label>
-                                {search.length !== 0 && <ListGroup className={"searchSuggestions"} style={{position: "absolute", height: "300px", overflowY: "auto", zIndex: "1000"}}>
-                                    {searchResults.map(result => <SearchResult title={result.title} author={result.artist} thumbnail={result.albumUri} id={result.uri} duration={result.duration}/>)}
+                                {search.length !== 0 && <ListGroup className={"searchSuggestions"} style={{
+                                    position: "absolute",
+                                    height: "300px",
+                                    overflowY: "auto",
+                                    zIndex: "1000"
+                                }}>
+                                    {searchResults.map(result => <SearchResult title={result.title}
+                                                                               author={result.artist}
+                                                                               thumbnail={result.albumUri}
+                                                                               id={result.uri}
+                                                                               duration={result.duration}/>)}
                                 </ListGroup>}
                             </FormGroup>
                         </Form>
@@ -220,11 +240,15 @@ export const ListOfSongsComponent = () => {
                         obj.preventDefault();
                     }}>
                         <FormGroup floating>
-                            <Input placeholder={"Enter new name"} value={newName} onChange={(data) => changeNewName(data.target.value)}
-                                   valid={newName !== "" && newName.length >= 3 && newName.length <= 15} invalid={(newName === "" || (newName.length < 3 || newName.length > 15)) && newNameTouched} onClick={() => toggleNewNameTouched(true)}/>
+                            <Input placeholder={"Enter new name"} value={newName}
+                                   onChange={(data) => changeNewName(data.target.value)}
+                                   valid={newName !== "" && newName.length >= 3 && newName.length <= 15}
+                                   invalid={(newName === "" || (newName.length < 3 || newName.length > 15)) && newNameTouched}
+                                   onClick={() => toggleNewNameTouched(true)}/>
                             <Label for={"newNameInput"}>Enter new name</Label>
                             {newName === "" && <FormFeedback>Playlist name is required!</FormFeedback>}
-                            {(newName.length < 3 || newName.length > 15) && <FormFeedback>Playlist name length should be from 3 to 15 symbols!</FormFeedback>}
+                            {(newName.length < 3 || newName.length > 15) &&
+                            <FormFeedback>Playlist name length should be from 3 to 15 symbols!</FormFeedback>}
                         </FormGroup>
                     </Form>
                 </ModalBody>

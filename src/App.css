@@ -4,6 +4,7 @@
 body{
     padding-top: 30px;
     background-color: black;
+    padding-bottom: 100px;
 }
 
 .playlist-card{
@@ -136,4 +137,10 @@ a{
 .editNameOnHover:hover{
     color: #747779;
     cursor: pointer;
+}
+
+@media screen and (max-width: 1024px){
+    .footerRecs{
+        margin-bottom: 100px !important;
+    }
 }

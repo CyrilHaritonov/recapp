@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {Card, CardBody, CardTitle, Row, Spinner} from "reactstrap";
 import {PlaylistComponent} from "./playlistComponent";
 import {useSelector} from "react-redux";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSquarePlus} from "@fortawesome/free-regular-svg-icons";
 import {Link} from "react-router-dom";
-import {spotifyApi} from "./headerComponent";
+import {serverAddress} from "../shared/serverAddress";
 
 export const ListComponent = () => {
     const playlists = useSelector(state => state.playlists.playlists);
@@ -16,10 +16,10 @@ export const ListComponent = () => {
             return (
                 <>
                     <Row className="justify-content-center">
-                        {playlists.map((playlist, index) => <PlaylistComponent name={playlist.name} date={playlist.date}
-                                                                      imgSrc={playlist?.songs[0]?.thumbnail ? playlist.songs[0].thumbnail: "/img/default.jpg"} key={playlist.id}
+                        {playlists.map((playlist) => <PlaylistComponent name={playlist.name} date={playlist.date}
+                                                                      imgSrc={playlist?.songs[0]?.thumbnail ? playlist.songs[0].thumbnail: serverAddress + "/img/default.jpg"} key={playlist.id}
                                                                       id={playlist.id}/>)}
-                        <div className="col-12 col-md-3 m-2 d-flex align-items-center justify-content-center">
+                        <div className="col-12 listComponent col-md-3 m-2 d-flex align-items-center justify-content-center">
                             <Link to={"/newplaylist"}>
                                 <Card className={"bg-black text-white"}>
                                     <CardBody style={{height: "auto"}}

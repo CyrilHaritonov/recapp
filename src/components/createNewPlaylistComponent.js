@@ -13,8 +13,10 @@ const CreateNewPlaylistComponent = () => {
     const playlist = useSelector(state => state.playlists.playlists);
     const [nameTouched, toggleNameTouched] = useState(false);
     const [contextTouched, toggleContextTouched] = useState(true);
-    const newId = playlist.reduce((max, playlist) => max > playlist.id ? max : playlist.id) + 1;
-    console.log(newId);
+    let newId = 0;
+    if (playlist.length > 0) {
+        newId = playlist.reduce((max, playlist) => max > playlist.id ? max : playlist.id) + 1;
+    }
     const onSubmit = () => {
         if (playlistName !== "" && playlistContext !== "" && playlistName.length >= 3 && playlistName.length <= 15) {
             spotifyApi.getMe().then((data) => {
