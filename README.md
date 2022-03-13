@@ -1,7 +1,7 @@
 ### This app is deployed at https://cyrilharitonov.azurewebsites.net/
 ### Notice that app works only for users who have been manually added in the white list since spotify application is set in devepopment mode
 
-###This webapp has following features:
+### This webapp has following features:
 * creating playlists(with form validation for playlist name length)
 * deleting playlists
 * adding songs using search from spotify library
